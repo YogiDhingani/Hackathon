@@ -7,7 +7,6 @@
 <title>Complaint management System</title>-->
 <body>
   <?php include ("header.php");?>
-  <div style="height:12%"></div>
   <section id="form" class="clearfix">
     <div class="container">
       <div class="intro-img">

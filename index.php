@@ -7,16 +7,27 @@
   ============================-->
   <section id="intro" class="clearfix">
     <div class="container">
-      <div class="intro-img">
-        <img src="img/intro-img.svg" alt="" class="img-fluid">
-      </div>
-
       <div class="intro-info">
-        <h2>We provide<br><span>solutions</span><br>for your complaints!</h2>
-        <div>
-          <a href="#about" class="btn-get-started scrollto">Get Started</a>
-          <a href="#services" class="btn-services scrollto">Our Services</a>
-        </div>
+          <form>
+            <div class="form-group row">
+              <label style="color:#ffffff" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-4">
+                <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label style="color:#ffffff" for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-4">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <a href="#about" class="btn-get-started scrollto">Login</a>
+                <a href="signup.php" class="btn-services scrollto">Register</a>
+              </div>
+            </div>
+          </form>
       </div>
 
     </div>
@@ -208,5 +219,6 @@
     Footer
   ============================-->
   <?php include("footer.php");?>
+
 </body>
 </html>

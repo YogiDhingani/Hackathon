@@ -51,12 +51,12 @@ function removeIncl(){
   <header id="header" class="fixed-top">
   <div class="container">
     <div class="logo float-left">
-      <a href="#intro" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a>
+      <a href="index.php" class="scrollto"><img src="img/logo.png" alt="" class="img-fluid"></a>
     </div>
 
     <nav class="main-nav float-right d-none d-lg-block">
       <ul>
-        <li class="active"><a href="#intro">Home</a></li>
+        <li class="active"><a href="index.php">Home</a></li>
         <li class="drop-down"><a href="">Compliant</a>
           <ul>
             <li><a href="new_compliant.php">New Complaint</a></li>

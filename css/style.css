@@ -179,25 +179,13 @@ h6 {
 }
 
 #intro .intro-img {
-  width: 50%;
-  float: right;
-}
-
-#intro .intro-info {
-  width: 50%;
+  width: 100%;
   float: left;
 }
 
-#intro .intro-info h2 {
-  color: #fff;
-  margin-bottom: 40px;
-  font-size: 48px;
-  font-weight: 700;
-}
-
-#intro .intro-info h2 span {
-  color: #74b5fc;
-  text-decoration: underline;
+#intro .intro-info {
+  width: 100%;
+  float: left;
 }
 
 #intro .intro-info .btn-get-started,
@@ -210,7 +198,7 @@ h6 {
   padding: 10px 32px;
   border-radius: 50px;
   transition: 0.5s;
-  margin: 0 20px 20px 0;
+  margin: 20px 20px 20px 0;
   color: #fff;
 }
 
@@ -1189,6 +1177,8 @@ h6 {
   padding: 0 0 30px 0;
   color: #eee;
   font-size: 14px;
+  bottom: 0;
+  width: -webkit-fill-available;
 }
 
 #footer .footer-top {
@@ -1362,7 +1352,6 @@ h6 {
     width: 80%;
     float: none;
     margin: auto;
-    text-align: center;
   }
 
   #why-us .card {
@@ -1408,6 +1397,10 @@ h6 {
 
 @media (max-width: 574px) {
   #intro {
-    padding: 100px 0 20px 0;
+    padding: 80px 0 20px 0;
+  }
+
+  #form{
+    padding: 80px 0 20px 0;
   }
 }
