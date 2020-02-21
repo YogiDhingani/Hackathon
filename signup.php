@@ -57,7 +57,7 @@ label{
           <div class="form-group row">
             <div class="col-sm-10">
               <a href="#" class="btn-get-started scrollto">Register</a>
-              <a href="login.php" class="btn-services scrollto">Back to Login</a>
+              <a href="#" class="btn-services scrollto" onclick="window.history.back()">Back to Login</a>
             </div>
           </div>
         </form>

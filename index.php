@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript">
-function hello(){
-  alert("hello");
-}
-</script>
 <body>
   <?php include("header.php");?>
   <!--==========================

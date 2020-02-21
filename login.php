@@ -1,34 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <script type="text/javascript">
-function hello(){
-  alert("hello");
+function performLogin(){
+  try {
+    login.performLogin();
+  } catch (e) {
+    //
+  } finally {
+    window.location.replace('/Hackathon/index.php');
+  }
 }
 </script>
 <body>
   <?php include("header_op.php");?>
+  <?php
+  include("getConn.php");
+  if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        $myusername = mysqli_real_escape_string($conn,$_POST['username']);
+        $mypassword = mysqli_real_escape_string($conn,$_POST['password']);
+
+        $sql = "SELECT admin_id FROM admin WHERE email_id = '$myusername' and password = '$mypassword'";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $count = mysqli_num_rows($result);
+
+        if($count == 1) {
+           //session_register("myusername");
+           //$_SESSION['login_user'] = $myusername;
+           ?><script type="text/javascript">performLogin();</script><?php
+           //echo '<script type="text/javascript">login.performLogin();</script>';
+           //header("location: index.php");
+        }else {
+           $error = "Your Login Name or Password is invalid";
+        }
+     }
+  ?>
   <!--==========================
     Intro Section
   ============================-->
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-          <form>
+          <form action="" method="post">
             <div class="form-group row">
               <label style="color:#ffffff" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
               <div class="col-sm-4">
-                <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+                <input type="email" class="form-control" name="username" placeholder="example@gmail.com">
               </div>
             </div>
             <div class="form-group row">
               <label style="color:#ffffff" for="inputPassword" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-4">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password">
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
-                <a href="#about" class="btn-get-started scrollto" onclick="hello();login.perfrmClicked()">Login</a>
+                <input type="submit" class="btn-get-started scrollto" value="Login">
                 <a href="signup.php" class="btn-services scrollto">Register</a>
               </div>
             </div>

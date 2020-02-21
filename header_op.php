@@ -51,7 +51,7 @@ function removeIncl(){
   <header id="header" class="fixed-top">
   <div class="container">
     <div class="logo float-left">
-      <h1 class="text-light"><a href="index.php"><b><span>Comssols</span></b></a></h1>
+      <h1 class="text-light"><a><b><span>Comssols</span></b></a></h1>
     </div>
 
     <nav class="main-nav float-right d-none d-lg-block">
