@@ -6,15 +6,35 @@ function hello(){
 }
 </script>
 <body>
-  <?php include("header.php");?>
+  <?php include("header_op.php");?>
   <!--==========================
     Intro Section
   ============================-->
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-          //
+          <form>
+            <div class="form-group row">
+              <label style="color:#ffffff" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-4">
+                <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label style="color:#ffffff" for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-4">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <a href="#about" class="btn-get-started scrollto" onclick="hello();login.perfrmClicked()">Login</a>
+                <a href="signup.php" class="btn-services scrollto">Register</a>
+              </div>
+            </div>
+          </form>
       </div>
+
     </div>
   </section><!-- #intro -->
 
