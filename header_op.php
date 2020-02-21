@@ -57,18 +57,8 @@ function removeIncl(){
     <nav class="main-nav float-right d-none d-lg-block">
       <ul>
         <li class="active"><a href="index.php">Home</a></li>
-        <li class="drop-down"><a href="">Compliant</a>
-          <ul>
-            <li><a href="new_compliant.php">New Complaint</a></li>
-            <li><a href="#">Solved Complaint</a></li>
-            <li><a href="#">Pending Complaint</a></li>
-          </ul>
-        </li>
-      	  <li><a href="#profile">Profile</a></li>
-      	  <li><a href="#team">Team</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-      	  <li><a href="#about">About Us</a></li>
-      	  <li><a href="#">Log Out</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      	 <li><a href="#about">About Us</a></li>
       </ul>
     </nav>
   </div>
