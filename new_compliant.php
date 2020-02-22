@@ -14,31 +14,31 @@
           <div class="form-group row">
             <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputTitle" placeholder="Title">
+              <input type="text" class="form-control" id="inputTitle" placeholder="Title">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputCategory" placeholder="Category">
+              <input type="text" class="form-control" id="inputCategory" placeholder="Category">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputSubCategory" class="col-sm-2 col-form-label">Sub Category</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputSubCategory" placeholder="Sub Category">
+              <input type="text" class="form-control" id="inputSubCategory" placeholder="Sub Category">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-4">
-              <textarea type="email" rows="5" class="form-control" id="inputDescription" placeholder="Description"></textarea>
+              <textarea type="text" rows="5" class="form-control" id="inputDescription" placeholder="Description"></textarea>
             </div>
           </div>
             <div class="form-group row">
             <label for="inputLocation" class="col-sm-2 col-form-label">Location</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputLocation" placeholder="Location">
+              <input type="text" class="form-control" id="inputLocation" placeholder="Location">
             </div>
           </div>
            <div class="form-group row">

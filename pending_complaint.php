@@ -39,8 +39,25 @@
           </div>
           <div class="card-footer">
             <small class="text-muted">Last updated 3 mins ago</small>
-            <small data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+            <small class="v-divider" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
             aria-controls="collapseOne" style="float: right;color: blue;cursor: pointer;">Comments</small>
+            <small data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+            aria-controls="collapseOne" style="float: right;color: blue;cursor: pointer;">Write Comment</small>
+          </div>
+
+          <div id="collapseTwo" class="collapse" aria-labelledby="heading" data-parent="#accordion">
+            <div class="card-body">
+              <form>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <textarea type="text" rows="2" class="form-control" id="inputTitle" placeholder="Your comment"></textarea>
+                  </div>
+                  <div class="col">
+                    <button type="button" class="btn btn-primary">Send</button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
 
           <div id="collapseOne" class="collapse" aria-labelledby="heading" data-parent="#accordion">

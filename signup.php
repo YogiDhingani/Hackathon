@@ -36,9 +36,13 @@ label{
           <div class="form-group row">
             <label for="inputGender" class="col-sm-2 col-form-label">Gender</label>
             <div class="col-sm-4">
-              <div class="radio">
-                <label class="radio-inline"><input style="margin:5px;" type="radio" name="optradio" checked>Male</label>
-                <label class="radio-inline"><input style="margin:5px;" type="radio" name="optradio">Female</label>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="formale" value="male" checked>
+                <label class="form-check-label" for="exampleRadios1">Male</label>
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" type="radio" name="gender" id="forfemale" value="female">
+                <label class="form-check-label" for="foefemale">Female</label>
               </div>
             </div>
           </div>
