@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-  <?php include("header.php");?>
+  <?php 
+		session_start();
+		if(!isset($_SESSION['user_id'])){
+			die("Do Login First");
+		}
+			$_SESSION['user_id']=$_SESSION['user_id'];
+			include("header.php");
+	?>
   <!--==========================
     Intro Section
   ============================-->
