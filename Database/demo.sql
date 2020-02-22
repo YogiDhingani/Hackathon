@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2020 at 10:28 AM
+-- Generation Time: Feb 22, 2020 at 05:31 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -69,15 +69,38 @@ INSERT INTO `category` (`category_id`, `name`, `creation_date`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `company`
+--
+
+CREATE TABLE `company` (
+  `company_id` int(5) NOT NULL,
+  `category_id` int(5) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `website` varchar(50) NOT NULL,
+  `creation_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`company_id`, `category_id`, `name`, `address`, `website`, `creation_date`) VALUES
+(1, 5, 'Amts', 'Out Side Jamalpur Darwaja,\r\nAmdavad-380022.', 'amts.co.in', '2020-02-22 16:27:00'),
+(2, 1, 'Hdfc', 'Maninagar Ground Floor, Nakshatra Building, Nr. Sales, Ahmedabad, Gujarat 380008.', 'hdfcbank.com', '2020-02-22 16:29:28');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `complaint`
 --
 
 CREATE TABLE `complaint` (
   `complaint_id` int(50) NOT NULL,
-  `title` varchar(50) NOT NULL,
+  `complaint_title` varchar(50) NOT NULL,
   `category_name` varchar(50) NOT NULL,
   `subcategory_name` varchar(50) NOT NULL,
-  `complain_detail` varchar(250) NOT NULL,
+  `complain_detail` varchar(500) NOT NULL,
   `complaint_file` varchar(250) NOT NULL,
   `location` varchar(250) NOT NULL,
   `status` varchar(50) NOT NULL,
@@ -85,15 +108,18 @@ CREATE TABLE `complaint` (
   `creation_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `solution_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `user_id` int(5) NOT NULL,
-  `manager_id` int(5) NOT NULL
+  `manager_id` int(5) NOT NULL,
+  `company_name` varchar(50) NOT NULL,
+  `website` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `complaint`
 --
 
-INSERT INTO `complaint` (`complaint_id`, `title`, `category_name`, `subcategory_name`, `complain_detail`, `complaint_file`, `location`, `status`, `privacy`, `creation_date`, `solution_date`, `user_id`, `manager_id`) VALUES
-(1, 'Bus Related', 'Transpotation', 'Timing of Bus', 'I am a student. i am regular user of your Transpotation service and take your buse to travel to and from my college. But during last couple of week your bus are making recurring delay and this is affecting our arrival in college on time.', '...', 'Isanpur,Ahmedabad-382443.', 'In process', 1, '2020-02-21 09:27:00', '2020-02-21 09:27:00', 11, 3);
+INSERT INTO `complaint` (`complaint_id`, `complaint_title`, `category_name`, `subcategory_name`, `complain_detail`, `complaint_file`, `location`, `status`, `privacy`, `creation_date`, `solution_date`, `user_id`, `manager_id`, `company_name`, `website`) VALUES
+(1, 'Bus Related', 'Transportation', 'Timing of Bus', 'I am a student.I am regular user of your Transportation service and take your buse to travel to and from my college. But during last couple of week your bus are making recurring delay and this is affecting our arrival in college on time.', '...', 'Isanpur,Ahmedabad-382443.', 'In process', 1, '2020-02-21 03:57:00', '2020-02-21 03:57:00', 2, 3, 'Amts', 'amts.co.in'),
+(2, 'Refund', 'Banking', 'Loan Related', 'I had applied for hdfc home loan and paid a processing fee of ₹5900 but hdfc couldn\'t fullfill my requirements and any amount was not sanctioned and other that i had applied with another bank and successfully sanctioned and disbursed. Then i asked hdfc to refund my processing fee they said please drop mail on trailing mail and i did that but after several reminders and complaint on hdfc website and grivelance but there is no response and update from there side...', '...', 'Maninagar,Ahmedabad.', 'In Proccess', 1, '2020-02-22 16:20:34', '2020-02-22 16:20:34', 3, 1, 'Hdfc', 'hdfcbank.com');
 
 -- --------------------------------------------------------
 
@@ -148,7 +174,8 @@ INSERT INTO `subcategory` (`subcategory_id`, `category_id`, `name`, `creation_da
 (4, 2, 'Appointment issues', '2020-02-21 09:09:05'),
 (5, 4, 'Wrong Product', '2020-02-21 09:12:23'),
 (6, 4, 'Delayed Delivery', '2020-02-21 09:12:23'),
-(7, 5, 'Timing of Bus ', '2020-02-21 09:14:20');
+(7, 5, 'Timing of Bus ', '2020-02-21 09:14:20'),
+(8, 1, 'Loan Related', '2020-02-22 16:11:34');
 
 -- --------------------------------------------------------
 
@@ -202,12 +229,17 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Indexes for table `company`
+--
+ALTER TABLE `company`
+  ADD PRIMARY KEY (`company_id`),
+  ADD KEY `fk_company_category_id` (`category_id`);
+
+--
 -- Indexes for table `complaint`
 --
 ALTER TABLE `complaint`
-  ADD PRIMARY KEY (`complaint_id`),
-  ADD KEY `fk_manager_id` (`manager_id`),
-  ADD KEY `fk_user_id` (`user_id`);
+  ADD PRIMARY KEY (`complaint_id`);
 
 --
 -- Indexes for table `manager`
@@ -245,10 +277,16 @@ ALTER TABLE `category`
   MODIFY `category_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `company`
+--
+ALTER TABLE `company`
+  MODIFY `company_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `complaint_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `complaint_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `manager`
@@ -260,7 +298,7 @@ ALTER TABLE `manager`
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `subcategory_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `subcategory_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -273,11 +311,10 @@ ALTER TABLE `user`
 --
 
 --
--- Constraints for table `complaint`
+-- Constraints for table `company`
 --
-ALTER TABLE `complaint`
-  ADD CONSTRAINT `fk_manager_id` FOREIGN KEY (`manager_id`) REFERENCES `manager` (`manager_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `company`
+  ADD CONSTRAINT `fk_company_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
 
 --
 -- Constraints for table `subcategory`
