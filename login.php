@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript">
+<!--<script type="text/javascript">
 function performLogin(){
   try {
     login.performLogin();
@@ -10,27 +10,33 @@ function performLogin(){
     window.location.replace('/Hackathon/index.php');
   }
 }
-</script>
+</script>-->
 <body>
-  <?php include("header_op.php");?>
+  <?php include("header.php");?>
   <?php
   include("getConn.php");
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
+  if(isset($_POST['login'])) {
 
-        $myusername = mysqli_real_escape_string($conn,$_POST['username']);
-        $mypassword = mysqli_real_escape_string($conn,$_POST['password']);
+		session_start();
+        $myusername = $_POST['username'];
+        $mypassword = $_POST['password'];
 
-        $sql = "SELECT admin_id FROM admin WHERE email_id = '$myusername' and password = '$mypassword'";
+        $sql = "SELECT user_id FROM user WHERE email_id = '$myusername' and password = '$mypassword'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
         $count = mysqli_num_rows($result);
 
         if($count == 1) {
+			
+					$_SESSION['user_id'] = $row['user_id'];
            //session_register("myusername");
            //$_SESSION['login_user'] = $myusername;
-           ?><script type="text/javascript">performLogin();</script><?php
+           ?>
+		   <!--<script type="text/javascript">performLogin();</script>-->
+		   <?php
            //echo '<script type="text/javascript">login.performLogin();</script>';
            //header("location: index.php");
+		   header('location:index.php');
         }else {
            $error = "Your Login Name or Password is invalid";
         }
@@ -42,7 +48,7 @@ function performLogin(){
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-          <form action="" method="post">
+          <form method="post">
             <div class="form-group row">
               <label style="color:#ffffff" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
               <div class="col-sm-4">
@@ -57,7 +63,7 @@ function performLogin(){
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
-                <input type="submit" class="btn-get-started scrollto" value="Login">
+                <input type="submit" class="btn-get-started scrollto" value="Login" name="login">
                 <a href="signup.php" class="btn-services scrollto">Register</a>
               </div>
             </div>
