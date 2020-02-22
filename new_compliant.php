@@ -17,7 +17,7 @@
   <section id="form" class="clearfix">
     <div class="container">
       <div class="intro-img">
-        <form method="post">
+        <form method="post" action="new_compliant.php">
           <div class="form-group row">
             <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
             <div class="col-sm-4">
@@ -56,7 +56,7 @@
             </div>
           <div class="form-group row">
             <div class="col-sm-10">
-              <button style="background:#00428a" type="submit" class="btn btn-primary" name="compaint">Complaint</button>
+              <button style="background:#00428a" type="submit" class="btn btn-primary" name="com">Complaint</button>
             </div>
           </div>
         </form>
@@ -65,19 +65,20 @@
   </section>
   <?php
 		include("footer.php");
-		if(isset($_POST['compaint'])){
+		if(isset($_POST['com'])){
 			$title=$_POST['title'];
 			$category=$_POST['category'];
 			$subcategory=$_POST['subcategory'];
 			$description=$_POST['description'];
 			$location=$_POST['location'];
 			$userid=$_SESSION['user_id'];
+			//echo $title.$category.$subcategory.$description.$location.$user_id; 
 			include("getConn.php");
-			$sql = "INSERT INTO complaint (title,category_name,subcategory_name,complain_detail,location,status,privacy,user_id) VALUES ('$title','$category','$subcategory','$description','$location','pending','public','$user_id')";
+			$sql = "INSERT INTO complaint(title,category_name,subcategory_name,complain_detail,location,status,privacy,user_id,manager_id,complaint_file) VALUES('$title','$category','$subcategory','$description','$location','pending',0,'$userid',3,'...')";
 
 			if ($conn->query($sql) === TRUE) {
 				//echo "New record created successfully";
-				header("location:new_compliant.php");
+				//header("location:new_compliant.php");
 			} 
 			else {
 				echo "Error: " . $sql . "<br>" . $conn->error;

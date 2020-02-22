@@ -12,8 +12,7 @@ function performLogin(){
 }
 </script>-->
 <body>
-  <?php include("header.php");?>
-  <?php
+  <?php include("header_op.php");
   include("getConn.php");
   if(isset($_POST['login'])) {
 
@@ -22,33 +21,27 @@ function performLogin(){
         $mypassword = $_POST['password'];
 
         $sql = "SELECT user_id FROM user WHERE email_id = '$myusername' and password = '$mypassword'";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-        $count = mysqli_num_rows($result);
-
-        if($count == 1) {
-			
-					$_SESSION['user_id'] = $row['user_id'];
-           //session_register("myusername");
-           //$_SESSION['login_user'] = $myusername;
-           ?>
-		   <!--<script type="text/javascript">performLogin();</script>-->
-		   <?php
-           //echo '<script type="text/javascript">login.performLogin();</script>';
-           //header("location: index.php");
-		   header('location:index.php');
-        }else {
-           $error = "Your Login Name or Password is invalid";
-        }
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
+			$_SESSION['user_id']=$row['user_id'];
+			 header('location:index.php');
+		}
+		}
+		else {
+				echo "Invalid UserName Or Password";
+		}
+     
      }
   ?>
+  
   <!--==========================
     Intro Section
   ============================-->
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-          <form method="post">
+          <form method="post" action="login.php">
             <div class="form-group row">
               <label style="color:#ffffff" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
               <div class="col-sm-4">
