@@ -61,7 +61,7 @@ function removeIncl(){
           <ul>
             <li><a href="new_compliant.php">New Complaint</a></li>
             <li><a href="#">Solved Complaint</a></li>
-            <li><a href="#">Pending Complaint</a></li>
+            <li><a href="Pending_complaint.php">Pending Complaint</a></li>
           </ul>
         </li>
       	  <li><a href="#profile">Profile</a></li>

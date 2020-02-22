@@ -1325,6 +1325,14 @@ h6 {
   padding: 100px 0px 20px 0px;
 }
 
+/* vertical divider */
+.v-divider{
+ padding-left: 5px;
+ margin-left:5px;
+ height:100%;
+ border-left:1px solid gray;
+}
+
 /*--------------------------------------------------------------
 # Responsive Media Queries
 --------------------------------------------------------------*/
