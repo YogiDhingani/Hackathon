@@ -21,31 +21,31 @@
           <div class="form-group row">
             <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputTitle" placeholder="Title" name="title">
+              <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputCategory" placeholder="Category" name="category">
+              <input type="text" class="form-control" id="inputCategory" placeholder="Category" name="category">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputSubCategory" class="col-sm-2 col-form-label">Sub Category</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputSubCategory" placeholder="Sub Category" name="subcategory">
+              <input type="text" class="form-control" id="inputSubCategory" placeholder="Sub Category" name="subcategory">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-4">
-              <textarea type="email" rows="5" class="form-control" id="inputDescription" placeholder="Description" name="description"></textarea>
+              <textarea type="text" rows="5" class="form-control" id="inputDescription" placeholder="Description" name="description"></textarea>
             </div>
           </div>
             <div class="form-group row">
             <label for="inputLocation" class="col-sm-2 col-form-label">Location</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputLocation" placeholder="Location" name="location">
+              <input type="text" class="form-control" id="inputLocation" placeholder="Location" name="location">
             </div>
           </div>
            <div class="form-group row">
