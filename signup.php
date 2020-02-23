@@ -1,9 +1,9 @@
 <html>
 <head>
-<style>
-label{
-  color: #ffffff;
-}
+  <style>
+  label{
+    color: #ffffff;
+  }
 </style>
 </head>
 <body>
@@ -61,7 +61,7 @@ label{
           <div class="form-group row">
             <div class="col-sm-10">
               <!-- <a href="#" class="btn-get-started scrollto">Register</a>-->
-			   <input type="submit" class="btn-get-started scrollto" value="Register" name="register">
+              <input type="submit" class="btn-get-started scrollto" value="Register" name="register">
               <a href="#" class="btn-services scrollto" onclick="window.history.back()">Back to Login</a>
             </div>
           </div>
@@ -70,38 +70,43 @@ label{
     </div>
   </section>
   <?php include("footer.php");
-		if(isset($_POST['register'])){
-			$name=$_POST['nm'];
-			$eid=$_POST['eid'];
-			$phone_no=$_POST['phone_no'];
-			$gender=$_POST['gender'];
-			$password=$_POST['password'];
-			$cpassword=$_POST['cpassword'];
-			
-			if($password!==$cpassword){
-				echo "<script>";
-					echo "alert('Password is not matched please enter again');";
-					echo "document.getElementById('inputName').value = '$name';";
-					echo "document.getElementById('inputEmail').value = '$eid';";
-					echo "document.getElementById('inputPhone').value = '$phone_no';";
-					echo "document.getElementById('inputPassword').value = '';";
-					echo "document.getElementById('inputConfirmPassword').value = '';";
-				echo"</script> ";
-			}
-			else{
-				include("getConn.php");
-			$sql = "INSERT INTO user(name,email_id,phone_no,password,gender) VALUES('$name','$eid',$phone_no,'$password','$gender')";
+  if(isset($_POST['register'])){
+    $name=$_POST['nm'];
+    $eid=$_POST['eid'];
+    $phone_no=$_POST['phone_no'];
+    $gender=$_POST['gender'];
+    $password=$_POST['password'];
+    $cpassword=$_POST['cpassword'];
 
-			if ($conn->query($sql) === TRUE) {
-				echo "<script> alert ('Registered Successfully');";
-				echo "</script>";
-				
-			} 
-			else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
-				}
-			}	
-		}	
+    if($password!==$cpassword){
+      echo "<script>";
+      echo "alert('Password is not matched please enter again');";
+      echo "document.getElementById('inputName').value = '$name';";
+      echo "document.getElementById('inputEmail').value = '$eid';";
+      echo "document.getElementById('inputPhone').value = '$phone_no';";
+      echo "document.getElementById('inputPassword').value = '';";
+      echo "document.getElementById('inputConfirmPassword').value = '';";
+      echo "</script> ";
+    }
+    else{
+      include("getConn.php");
+      $sql = "SELECT user_id FROM user WHERE email_id = '$eid'";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
+        echo '<script type="text/javascript">alert("Email already used before");</script>';
+        exit();
+      }
+      else {
+        $sql = "INSERT INTO user(name,email_id,phone_no,password,gender) VALUES('$name','$eid',$phone_no,'$password','$gender')";
+        if ($conn->query($sql) === TRUE) {
+          echo "<script>alert('Registered Successfully');window.history.back();</script>";
+        }
+        else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+      }
+    }
+  }
   ?>
 </body>
 </html>

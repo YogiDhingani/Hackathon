@@ -1,47 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--<script type="text/javascript">
-function performLogin(){
-try {
-login.performLogin();
-} catch (e) {
-//
-} finally {
-window.location.replace('/Hackathon/index.php');
-}
-}
-</script>-->
+<script src="android.js"></script>
 <body>
-  <?php include("header_op.php");
-  include("getConn.php");
-  if(isset($_POST['login'])) {
-
-    session_start();
-    $myusername = $_POST['username'];
-    $mypassword = $_POST['password'];
-
-    $sql = "SELECT user_id FROM user WHERE email_id = '$myusername' and password = '$mypassword'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-      while($row = $result->fetch_assoc()) {
-        $_SESSION['user_id']=$row['user_id'];
-        header('location:index.php');
-      }
-    }
-    else {
-      echo "Invalid UserName Or Password";
-    }
-
+  <?php
+  include('header_op.php');
+  session_start();
+  if(isset($_SESSION['user_id'])){
+    echo '<script type="text/javascript">performLogin();</script>';
   }
   ?>
-
   <!--==========================
   Intro Section
   ============================-->
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-        <form method="post" action="login.php">
+        <form method="post" action="checkLogin.php">
           <div class="form-group row">
             <label style="color:#ffffff" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-4">
@@ -69,6 +43,5 @@ window.location.replace('/Hackathon/index.php');
   Footer
   ============================-->
   <?php include("footer.php");?>
-
 </body>
 </html>
