@@ -32,6 +32,12 @@ function removeIncl(){
   var el2 = document.getElementsByClassName("mobile-nav-toggle");
   el2[0].parentNode.removeChild(el2[0]);
 }
+
+function logout(){
+  var r = confirm("You want to logout?");
+  if(r)
+    window.location.href = 'logout.php';
+}
 </script>
 
 <!-- =======================================================
@@ -68,7 +74,7 @@ function removeIncl(){
       	  <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact Us</a></li>
       	  <li><a href="#about">About Us</a></li>
-      	  <li><a href="#">Log Out</a></li>
+      	  <li><a href="#" onclick="logout();">Log Out</a></li>
       </ul>
     </nav>
   </div>

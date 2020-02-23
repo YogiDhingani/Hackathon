@@ -1,4 +1,4 @@
-<footer id="footer">
+<footer id="footer" class="fixed-bottom">
   <div class="container">
     <div class="copyright">
       &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
