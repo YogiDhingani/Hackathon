@@ -49,13 +49,13 @@ label{
           <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">New Password</label>
             <div class="col-sm-4">
-              <input type="password" class="form-control" id="inputPassword" placeholder="New Password" name="password">
+              <input type="password" class="form-control" id="inputPassword" placeholder="New Password" name="password" required>
             </div>
           </div>
           <div class="form-group row">
             <label for="inputConfirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
             <div class="col-sm-4">
-              <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password">
+              <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" name="cpassword" required>
             </div>
           </div>
           <div class="form-group row">
@@ -74,10 +74,34 @@ label{
 			$name=$_POST['nm'];
 			$eid=$_POST['eid'];
 			$phone_no=$_POST['phone_no'];
+			$gender=$_POST['gender'];
+			$password=$_POST['password'];
+			$cpassword=$_POST['cpassword'];
 			
-			
-			
-		}
+			if($password!==$cpassword){
+				echo "<script>";
+					echo "alert('Password is not matched please enter again');";
+					echo "document.getElementById('inputName').value = '$name';";
+					echo "document.getElementById('inputEmail').value = '$eid';";
+					echo "document.getElementById('inputPhone').value = '$phone_no';";
+					echo "document.getElementById('inputPassword').value = '';";
+					echo "document.getElementById('inputConfirmPassword').value = '';";
+				echo"</script> ";
+			}
+			else{
+				include("getConn.php");
+			$sql = "INSERT INTO user(name,email_id,phone_no,password,gender) VALUES('$name','$eid',$phone_no,'$password','$gender')";
+
+			if ($conn->query($sql) === TRUE) {
+				echo "<script> alert ('Registered Successfully');";
+				echo "</script>";
+				
+			} 
+			else {
+				echo "Error: " . $sql . "<br>" . $conn->error;
+				}
+			}	
+		}	
   ?>
 </body>
 </html>
