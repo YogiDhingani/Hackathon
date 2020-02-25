@@ -28,6 +28,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
+create or replace database cms;
+
+use cms;
+
 CREATE TABLE `admin` (
   `admin_id` int(5) NOT NULL,
   `name` varchar(50) NOT NULL,
