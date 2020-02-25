@@ -175,7 +175,7 @@ h6 {
   position: relative;
   background: url("../img/intro-bg.png") center bottom no-repeat;
   background-size: cover;
-  padding: 200px 0 120px 0;
+  padding: 110px 0 60px 0;
 }
 
 #intro .intro-img {
@@ -561,12 +561,12 @@ h6 {
 }
 
 #about .about-extra {
-  padding-top: 60px;
+  padding: 40px;
 }
 
 #about .about-extra h4 {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 15px;
 }
 
 /* Services Section
@@ -1324,6 +1324,15 @@ h6 {
   position: relative;
   padding: 100px 0px 20px 0px;
 }
+
+/* vertical divider */
+.v-divider{
+ padding-left: 5px;
+ margin-left:5px;
+ height:100%;
+ border-left:1px solid gray;
+}
+
 
 /*--------------------------------------------------------------
 # Responsive Media Queries

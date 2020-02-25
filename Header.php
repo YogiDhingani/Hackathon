@@ -61,14 +61,14 @@ function removeIncl(){
           <ul>
             <li><a href="new_compliant.php">New Complaint</a></li>
             <li><a href="#">Solved Complaint</a></li>
-            <li><a href="#">Pending Complaint</a></li>
+            <li><a href="Pending_complaint.php">Pending Complaint</a></li>
           </ul>
         </li>
       	  <li><a href="#profile">Profile</a></li>
       	  <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact Us</a></li>
       	  <li><a href="#about">About Us</a></li>
-      	  <li><a href="#">Log Out</a></li>
+      	  <li><a href="logout.php">Log Out</a></li>
       </ul>
     </nav>
   </div>
