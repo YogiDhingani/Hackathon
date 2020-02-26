@@ -31,15 +31,22 @@ Intro Section
     <header class="section-header">
       <h4 style="text-align:center;">Some recent topics</h4>
     </header>
+    
     <div class="row about-extra">
+
+      <?php include 'getConn.php';
+    $s = 'SELECT title,complaint_id FROM complaint where status="Completed"';
+   $sql=mysqli_query($conn,$s);
+                 while($row = mysqli_fetch_assoc($sql))
+      {?>
       <div class="col-lg-6 content order-lg-1 order-2">
-        <h4 class="title"><a href="">Laudem latine persequeris id sed, ex fabulas delectus quo. No vel par</a></h4>
-      </div>
-      <div class="col-lg-6 content order-lg-1 order-2">
-        <h4 class="title"><a href="">No vel partiendo abhorreant vituperatoribusr</a></h4>
-      </div>
+        <h4 class="title">
+          <a href="complaints_card.php?complaint_id=<?php echo $row['complaint_id']; ?>"><?php echo $row['title'];?></a></h4><br>
+      </div><?php } ?> 
     </div>
-  </section><!-- #about -->
+  </section>
+  
+    
   <!--==========================
   Why Us Section
   ============================-->
@@ -77,7 +84,7 @@ Intro Section
   <!--==========================
   Clients Section
   ============================-->
-  <section id="testimonials" class="section-bg">
+  <section id="testimonials" class="section-bg" style="margin-bottom: 100px">
     <div class="container">
 
       <header class="section-header">
