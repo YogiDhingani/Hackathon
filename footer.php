@@ -1,4 +1,4 @@
-<footer id="footer">
+<footer id="footer" class="fixed-bottom">
   <div class="container">
     <div class="copyright">
       &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
@@ -8,11 +8,15 @@
     </div>
   </div>
 </footer><!-- #footer -->
-
+<script type="text/javascript">
+function removeFooter(){
+  var el = document.getElementById("footer");
+  el.parentNode.removeChild(el);
+}
+</script>
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <!-- Uncomment below i you want to use a preloader -->
 <!-- <div id="preloader"></div> -->
-
 <!-- JavaScript Libraries -->
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/jquery/jquery-migrate.min.js"></script>
@@ -27,6 +31,5 @@
 <script src="lib/lightbox/js/lightbox.min.js"></script>
 <!-- Contact Form JavaScript File -->
 <script src="contactform/contactform.js"></script>
-
 <!-- Template Main Javascript File -->
 <script src="js/main.js"></script>

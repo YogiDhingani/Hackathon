@@ -6,39 +6,46 @@
 </head>
 <title>Complaint management System</title>-->
 <body>
-  <?php include ("header.php");?>
+  <?php
+		session_start();
+		if(!isset($_SESSION['user_id'])){
+			die("Do Login First");
+		}
+			$_SESSION['user_id']=$_SESSION['user_id'];
+			include ("header.php");
+	?>
   <section id="form" class="clearfix">
     <div class="container">
       <div class="intro-img">
-        <form>
+        <form method="post" action="new_compliant.php">
           <div class="form-group row">
             <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputTitle" placeholder="Title">
+              <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputCategory" placeholder="Category">
+              <input type="text" class="form-control" id="inputCategory" placeholder="Category" name="category">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputSubCategory" class="col-sm-2 col-form-label">Sub Category</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputSubCategory" placeholder="Sub Category">
+              <input type="text" class="form-control" id="inputSubCategory" placeholder="Sub Category" name="subcategory">
             </div>
           </div>
           <div class="form-group row">
             <label for="inputDescription" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-4">
-              <textarea type="email" rows="5" class="form-control" id="inputDescription" placeholder="Description"></textarea>
+              <textarea type="text" rows="5" class="form-control" id="inputDescription" placeholder="Description" name="description"></textarea>
             </div>
           </div>
             <div class="form-group row">
             <label for="inputLocation" class="col-sm-2 col-form-label">Location</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" id="inputLocation" placeholder="Location">
+              <input type="text" class="form-control" id="inputLocation" placeholder="Location" name="location">
             </div>
           </div>
            <div class="form-group row">
@@ -49,13 +56,34 @@
             </div>
           <div class="form-group row">
             <div class="col-sm-10">
-              <button style="background:#00428a" type="submit" class="btn btn-primary">Complaint</button>
+              <button style="background:#00428a" type="submit" class="btn btn-primary" name="com">Complaint</button>
             </div>
           </div>
         </form>
       </div>
     </div>
   </section>
-  <?php include("footer.php");?>
+  <?php
+		include("footer.php");
+		if(isset($_POST['com'])){
+			$title=$_POST['title'];
+			$category=$_POST['category'];
+			$subcategory=$_POST['subcategory'];
+			$description=$_POST['description'];
+			$location=$_POST['location'];
+			$userid=$_SESSION['user_id'];
+			//echo $title.$category.$subcategory.$description.$location.$user_id; 
+			include("getConn.php");
+			$sql = "INSERT INTO complaint(title,category_name,subcategory_name,complain_detail,location,status,privacy,user_id,manager_id,complaint_file) VALUES('$title','$category','$subcategory','$description','$location','pending',0,'$userid',3,'...')";
+
+			if ($conn->query($sql) === TRUE) {
+				//echo "New record created successfully";
+				//header("location:new_compliant.php");
+			} 
+			else {
+				echo "Error: " . $sql . "<br>" . $conn->error;
+				}
+		}	
+	?>
   </body>
 </html>
