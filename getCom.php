@@ -22,6 +22,22 @@ if ($result->num_rows > 0) {
         $com['manager'] = $row2["name"];
       }
     }
+
+    if($row["complaint_file"] != NULL)
+      $com['comp_file'] = $row["complaint_file"];
+    else
+      $com['comp_file'] = "No file found";
+
+    if($row["solution_file"] != NULL)
+      $com['sol_file'] = $row["solution_file"];
+    else
+      $com['sol_file'] = "No file found";
+
+    if($row["solution_detail"] != NULL)
+      $com['sol_det'] = $row["solution_detail"];
+    else
+      $com['sol_det'] = "Your request is still pending";
+
     $com['status'] = $row["status"];
     $com['date'] = $row["creation_date"];
     array_push($coms,$com);

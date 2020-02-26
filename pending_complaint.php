@@ -39,6 +39,10 @@ $(document).ready(function() {
             <a class="nav-link" id="sol-tab${v.id}" data-toggle="tab" href="#sol${v.id}" role="tab"
             aria-controls="sol${v.id}" aria-selected="false">Sloution</a>
             </li>
+            <li class="nav-item">
+            <a class="nav-link" id="doc-tab${v.id}" data-toggle="tab" href="#doc${v.id}" role="tab"
+            aria-controls="doc${v.id}" aria-selected="false">Attachment</a>
+            </li>
             <li class="nav-item disabled">
             <a class="nav-link disabled"><span class="badge badge-primary">${v.status}</span></a>
             </li>
@@ -46,12 +50,14 @@ $(document).ready(function() {
             </div>
             <div class="tab-content">
             <div class="card-body text-dark tab-pane fade show active" id="com${v.id}" role="tabpanel" aria-labelledby="com-tab${v.id}">
-            <h6 class="card-title">Subject: ${v.title} <strong>${v.category}</strong></h6>
+            <h6 class="card-title">Subject: ${v.title} <strong>(${v.category})</strong></h6>
             <p class="card-text">${v.desc}</p>
             </div>
             <div class="card-body text-dark text-dark tab-pane fade" id="sol${v.id}" role="tabpanel" aria-labelledby="sol-tab${v.id}">
-            <h6 class="card-title">Subcategory</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>
+            <p class="card-text">${v.sol_det}</p>
+            </div>
+            <div class="card-body text-dark text-dark tab-pane fade" id="doc${v.id}" role="tabpanel" aria-labelledby="doc-tab${v.id}">
+            <!-- append Attachment-->
             </div>
             </div>
             <div class="card-footer">
@@ -85,6 +91,15 @@ $(document).ready(function() {
             </div>
             </div>
             </div>`);
+            if(v.comp_file=="No file found" && v.sol_file=="No file found"){
+              $('#doc'+v.id).append(`<p class="card-text">No attachment found</p>`);
+            }
+            if(v.comp_file!="No file found"){
+              $('#doc'+v.id).append(`<p class="card-text">Complaint file:<a href="${v.comp_file}"> GetFile</a></p>`);
+            }
+            if(v.sol_file!="No file found"){
+              $('#doc'+v.id).append(`<p class="card-text">Solution file:<a href="${v.sol_file}"> GetFile</a></p>`);
+            }
         });
       }
       },
