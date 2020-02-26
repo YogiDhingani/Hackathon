@@ -34,7 +34,7 @@ if (mysqli_connect_errno())
    }?>
 <!DOCTYPE html>
 <head>
-<title>BRAINZONE Admin</title>
+<title>Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -58,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
 <div class="w3layouts-main">
 
-	<h2>BRAINZONE Admin</h2>
+	<h2>Admin</h2>
 <p><?php if(isset($error)){ echo $error;} ?></p>
 		<form  method="post">
 			<input type="email" class="ggg" name="email" required="" placeholder="Email" >
@@ -67,7 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 				<div class="clearfix"></div>
 				<input type="submit" value="Sign In" name="Submit">
-				<center> <a href="../brainzone/index.php">Go to User Panel</a></center>
+				<!--center> <a href="../brainzone/index.php">Go to User Panel</a></center-->
 				</form>
 		
 </div>
