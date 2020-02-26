@@ -52,17 +52,17 @@ function updateSQL($par){
   }
 
   if($par === "not"){
-    $sql = "INSERT INTO complaint(title,category_name,complain_detail,location,status,privacy,user_id,manager_id)
+    $sql = "INSERT INTO complaint(title,category_name,complaint_detail,location,status,privacy,user_id,manager_id)
     VALUES('$title','$category','$description','$location','pending',0,$userid,$mng_id)";
   }else{
-    $sql = "INSERT INTO complaint(title,category_name,complain_detail,location,status,privacy,user_id,manager_id,complaint_file)
+    $sql = "INSERT INTO complaint(title,category_name,complaint_detail,location,status,privacy,user_id,manager_id,complaint_file)
     VALUES('$title','$category','$description','$location','pending',0,$userid,$mng_id,'$par')";
   }
 
   if ($conn->query($sql) === TRUE) {
     echo "success";
   }else {
-    echo '<script>console.log("SQL error")</script>';
+    echo '<script>console.log("SQL Error")</script>';
   }
 }
 
