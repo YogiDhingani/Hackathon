@@ -97,7 +97,9 @@
         exit();
       }
       else {
-        $sql = "INSERT INTO user(name,email_id,phone_no,password,gender) VALUES('$name','$eid',$phone_no,'$password','$gender')";
+
+        $pass = md5($password);
+        $sql = "INSERT INTO user(name,email_id,phone_no,password,gender) VALUES('$name','$eid',$phone_no,'$pass','$gender')";
         if ($conn->query($sql) === TRUE) {
           echo "<script>alert('Registered Successfully');window.history.back();</script>";
         }
