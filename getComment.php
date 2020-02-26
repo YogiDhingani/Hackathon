@@ -21,5 +21,7 @@ if ($result->num_rows > 0) {
     array_push($coms,$com);
   }
   echo json_encode($coms);
+}else {
+  echo "null";
 }
 ?>

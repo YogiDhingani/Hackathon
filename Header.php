@@ -35,7 +35,12 @@ function removeIncl(){
   el2[0].parentNode.removeChild(el2[0]);
 }
 </script>
-
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+  echo '<script type="text/javascript">performLogout();</script>';
+}
+?>
 <!-- =======================================================
   Theme Name: NewBiz
   Theme URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
