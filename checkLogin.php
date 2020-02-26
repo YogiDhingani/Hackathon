@@ -4,7 +4,7 @@ include("getConn.php");
 session_start();
 if(isset($_POST['login'])) {
   $myusername = $_POST['username'];
-  $mypassword = $_POST['password'];
+  $mypassword = md5($_POST['password']);
 
   $sql = "SELECT user_id FROM user WHERE email_id = '$myusername' and password = '$mypassword'";
   $result = $conn->query($sql);

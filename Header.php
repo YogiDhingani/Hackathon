@@ -62,14 +62,12 @@ function removeIncl(){
         <li class="drop-down"><a href="">Compliant</a>
           <ul>
             <li><a href="new_complaint.php">New Complaint</a></li>
-            <li><a href="#">Solved Complaint</a></li>
-            <li><a href="Pending_complaint.php">Pending Complaint</a></li>
+            <li><a href="Pending_complaint.php">Your Complaint</a></li>
           </ul>
         </li>
-      	  <li><a href="#profile">Profile</a></li>
-      	  <li><a href="#team">Team</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-      	  <li><a href="#about">About Us</a></li>
+      	  <li><a href="ProfileDB.php">Profile</a></li>
+          <li><a href="ContactUs.php">Contact Us</a></li>
+      	  <li><a href="AboutUs.php">About Us</a></li>
       	  <li><a href="logout.php">Log Out</a></li>
       </ul>
     </nav>

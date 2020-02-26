@@ -1,13 +1,13 @@
-<!-- <footer id="footer" class="fixed-bottom">
+<footer id="footer" class="fixed-bottom">
   <div class="container">
     <div class="copyright">
-      &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
+      &copy; Copyright <strong>COMSSOLS</strong>. All Rights Reserved
     </div>
     <div class="credits">
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a>COMSSOLS TEAM</a>
     </div>
   </div>
-</footer> -->
+</footer>
 
 <!-- #footer -->
 <script type="text/javascript">
