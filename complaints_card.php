@@ -11,16 +11,30 @@
                         <div class="header" style="background-color:#004a99; color:#fff">
                         	<?php include 'getConn.php';
                         	$id = $_GET['complaint_id'];
-    $s = "SELECT complain_detail FROM complaint where complaint_id=$id";
-     $sql=mysqli_query($conn,$s);
-     $row = mysqli_fetch_assoc($sql);
-     echo $row['complain_detail'];?>
-                        </div>
-                        <div class="body">
-                            
-                        </div>
-                    </div>
-    	</div>
+    $s = "SELECT complaint_detail,title FROM complaint where complaint_id=$id";
+    $sql=mysqli_query($conn,$s);
+    $row = mysqli_fetch_assoc($sql);
+    echo"<h4 style=\"color:#fff;\">";
+    echo "<b>Title : </b>";
+    echo $row['title'];
+    echo"</h4>";
+    echo" <small>";
+    echo"<b>Complaint : </b>";
+    echo $row['complaint_detail'];
+    echo"</small>";
+	?>
+    </div>
+    <div class="body">
+    <?php include 'getConn.php';
+    $id = $_GET['complaint_id'];
+    $s = "SELECT solution_detail FROM complaint where complaint_id=$id";
+    $sql=mysqli_query($conn,$s);
+    $row = mysqli_fetch_assoc($sql);
+    echo"<b>Solution : </b>";
+    echo $row['solution_detail'];?>
+    </div>
+    </div>
+    </div>
 </div>
 </body>
 <?php include 'footer.php';?>
