@@ -5,6 +5,8 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery-migrate.min.js"></script>
 <!-- Favicons -->
 <link href="img/favicon.png" rel="icon">
 <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -59,7 +61,7 @@ function removeIncl(){
         <li class="active"><a href="index.php">Home</a></li>
         <li class="drop-down"><a href="">Compliant</a>
           <ul>
-            <li><a href="new_compliant.php">New Complaint</a></li>
+            <li><a href="new_complaint.php">New Complaint</a></li>
             <li><a href="#">Solved Complaint</a></li>
             <li><a href="Pending_complaint.php">Pending Complaint</a></li>
           </ul>

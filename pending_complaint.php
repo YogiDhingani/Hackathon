@@ -6,75 +6,132 @@
 </head>
 <title>Complaint management System</title>-->
 <body>
-  <?php include ("header.php");?>
+  <?php include ("header.php");
+  ?>
 
   <section id ="form" class="clearfix">
-    <div class="container">
-      <div id="accordion">
-        <div class="card border-dark mb-3">
-          <div class="card-header" id="heading">
-            <ul class="nav nav-tabs card-header-tabs" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="com-tab" data-toggle="tab" href="#com" role="tab"
-                aria-controls="com" aria-selected="true">Complaint</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="sol-tab" data-toggle="tab" href="#sol" role="tab"
-                aria-controls="sol" aria-selected="false">Sloution</a>
-              </li>
-              <li class="nav-item disabled">
-                <a class="nav-link disabled"><span class="badge badge-primary">In progress</span></a>
-              </li>
-            </ul>
-          </div>
-          <div class="tab-content">
-            <div class="card-body text-dark tab-pane fade show active" id="com" role="tabpanel" aria-labelledby="com-tab">
-              <h6 class="card-title">Subcategory</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <div class="card-body text-dark text-dark tab-pane fade" id="sol" role="tabpanel" aria-labelledby="sol-tab">
-              <h6 class="card-title">Subcategory</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-            <small class="v-divider" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-            aria-controls="collapseOne" style="float: right;color: blue;cursor: pointer;">Comments</small>
-            <small data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-            aria-controls="collapseOne" style="float: right;color: blue;cursor: pointer;">Write Comment</small>
-          </div>
-
-          <div id="collapseTwo" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-            <div class="card-body">
-              <form>
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <textarea type="text" rows="2" class="form-control" id="inputTitle" placeholder="Your comment"></textarea>
-                  </div>
-                  <div class="col">
-                    <button type="button" class="btn btn-primary">Send</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <div id="collapseOne" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-            <div class="card-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-              <p class="blockquote-footer card-text" style="float:right;">jubin</p>
-            </div>
-            <div class="card-body">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-              <p class="blockquote-footer card-text" style="float:right;">jubin</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="container" id="populate">
     </div>
-  </section>
+</section>
 
-  <?php include("footer.php");?>
+<script>
+$(document).ready(function() {
+  $.ajax({
+    type: 'POST',
+    url: 'getCom.php',
+    dataType: 'json',
+    cache: false,
+    success: function(res) {
+      //console.log(res);
+      //var data = $.parseJSON(res);
+      if(res!=null){
+        $.each(res, function(k,v) {
+            //console.log(v.title);
+           $("#populate").append(`<div id="accordion${v.id}">
+            <div class="card border-dark mb-3">
+            <div class="card-header" id="heading">
+            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+            <li class="nav-item">
+            <a class="nav-link active" id="com-tab${v.id}" data-toggle="tab" href="#com${v.id}" role="tab"
+            aria-controls="com${v.id}" aria-selected="true">Complaint</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" id="sol-tab${v.id}" data-toggle="tab" href="#sol${v.id}" role="tab"
+            aria-controls="sol${v.id}" aria-selected="false">Sloution</a>
+            </li>
+            <li class="nav-item disabled">
+            <a class="nav-link disabled"><span class="badge badge-primary">${v.status}</span></a>
+            </li>
+            </ul>
+            </div>
+            <div class="tab-content">
+            <div class="card-body text-dark tab-pane fade show active" id="com${v.id}" role="tabpanel" aria-labelledby="com-tab${v.id}">
+            <h6 class="card-title">Subject: ${v.title} <strong>${v.category}</strong></h6>
+            <p class="card-text">${v.desc}</p>
+            </div>
+            <div class="card-body text-dark text-dark tab-pane fade" id="sol${v.id}" role="tabpanel" aria-labelledby="sol-tab${v.id}">
+            <h6 class="card-title">Subcategory</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>
+            </div>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">${v.date}</small>
+            <small style="margin-left:10px;">Assigned to: ${v.manager}</small>
+
+            <small class="v-divider" id="getComment${v.id}" onclick="showComment(${v.id})" data-toggle="collapse" data-target="#collapseOne${v.id}" aria-expanded="false"
+            aria-controls="collapseOne${v.id}" style="float: right;color: blue;cursor: pointer;">Comments</small>
+
+            <small data-toggle="collapse" data-target="#collapseTwo${v.id}" aria-expanded="false"
+            aria-controls="collapseTwo${v.id}" style="float: right;color: blue;cursor: pointer;">Write Comment</small>
+            </div>
+
+            <div id="collapseTwo${v.id}" class="collapse" aria-labelledby="heading" data-parent="#accordion${v.id}">
+            <div class="card-body">
+            <form>
+            <div class="form-group row">
+            <div class="col-sm-6">
+            <textarea type="text" rows="2" class="form-control" id="comment${v.id}" placeholder="Your comment"></textarea>
+            </div>
+            <div class="col">
+            <input type="button" class="btn btn-primary" value="Send" onclick="sendComm(${v.id})">
+            </div>
+            </div>
+            </form>
+            </div>
+            </div>
+
+            <div id="collapseOne${v.id}" class="collapse" aria-labelledby="heading" data-parent="#accordion${v.id}">
+            <!--append comments-->
+            </div>
+            </div>
+            </div>`);
+        });
+      }
+      },
+    });
+  });
+
+function sendComm(id){
+  $.ajax({
+    type: 'POST',
+    url: 'writeComment.php',
+    cache: false,
+    data: {com: $('#comment'+id).val(), com_id: id},
+    success: function(res) {
+      if(res==="success"){
+        setInterval('location.reload()', 500);
+        alert("Comment added");
+      }
+    },
+  });
+}
+
+var enabled = true;
+function showComment(id){
+  if(enabled){
+    $.ajax({
+      type: 'POST',
+      url: 'getComment.php',
+      cache: false,
+      dataType: 'json',
+      data: {com_id: id},
+      success: function(res) {
+        if(res!=null){
+          //console.log(res);
+          $.each(res, function(k,v) {
+             $("#collapseOne"+id).append(`<div class="card-body">
+             ${v.comment}
+             <p class="blockquote-footer card-text" style="float:right;">${v.user}</p>
+             </div>`);
+           });
+        }
+      },
+    });
+    enabled=false;
+  }
+}
+
+</script>
+<?php include("footer.php");?>
 </body>
 </html>
