@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2020 at 08:40 AM
+-- Generation Time: Feb 26, 2020 at 09:14 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -116,7 +116,7 @@ CREATE TABLE `complaint` (
 --
 
 INSERT INTO `complaint` (`complaint_id`, `title`, `category_name`, `subcategory_name`, `complaint_detail`, `solution_detail`, `complaint_file`, `solution_file`, `location`, `status`, `privacy`, `creation_date`, `solution_date`, `user_id`, `manager_id`) VALUES
-(1, 'Bus Related', 'Transpotation', 'Timing of Bus', 'I am a student. i am regular user of your Transpotation service and take your buse to travel to and from my college. But during last couple of week your bus are making recurring delay and this is affecting our arrival in college on time.', NULL, '...', '', 'Isanpur,Ahmedabad-382443.', 'Pending', 'public', '2020-02-21 03:57:00', '2020-02-21 03:57:00', 11, 3);
+(1, 'Bus Related', 'Transpotation', 'Timing of Bus', 'I am a student. i am regular user of your Transpotation service and take your buse to travel to and from my college. But during last couple of week your bus are making recurring delay and this is affecting our arrival in college on time.', NULL, '...', NULL, 'Isanpur,Ahmedabad-382443.', 'Pending', 'public', '2020-02-21 03:57:00', '2020-02-21 03:57:00', 11, 3);
 
 -- --------------------------------------------------------
 
@@ -146,7 +146,7 @@ CREATE TABLE `manager` (
 INSERT INTO `manager` (`manager_id`, `name`, `email_id`, `phone_no`, `category`, `subcategory`, `city`, `password`, `total_complaint`, `pending_complaint`, `solved_complaint`, `creation_date`) VALUES
 (1, 'Ramesh Gupta', 'rameshgupta2123@gmail.com', 7854123656, 'Banking', 'Transaction', 'Ahmedabad', 'guptar@13', 5, 3, 2, '2020-02-21 03:27:24'),
 (2, 'Mina Mishra', 'mishramina@gmail.com', 8657422574, 'E-commerce', 'Shopping', 'Surat', 'Minamishra@13', 8, 4, 4, '2020-02-21 03:29:32'),
-(3, '', '', 0, '', 'Timing', '', 'kartikP@111', 9, 4, 5, '2020-02-21 03:54:46'),
+(3, 'Kartik Patel', 'patelkartik12@gmail.com', 8657425678, 'Transpotation', 'Timing', 'Ahmedabad', 'kartikP@111', 9, 4, 5, '2020-02-21 03:54:46'),
 (4, 'Rohan Patel', 'rohanpatel@gmail.com', 9833412432, 'Helth', 'poor treatment', 'Ahmedabad', '123456', NULL, NULL, NULL, '2020-02-25 01:20:30');
 
 -- --------------------------------------------------------
@@ -243,7 +243,7 @@ ALTER TABLE `complaint`
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `manager_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `manager_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user`
 --
