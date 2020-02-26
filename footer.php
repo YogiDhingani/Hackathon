@@ -1,4 +1,4 @@
-<footer id="footer" class="fixed-bottom">
+<!-- <footer id="footer" class="fixed-bottom">
   <div class="container">
     <div class="copyright">
       &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
@@ -7,7 +7,9 @@
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
   </div>
-</footer><!-- #footer -->
+</footer> -->
+
+<!-- #footer -->
 <script type="text/javascript">
 function removeFooter(){
   var el = document.getElementById("footer");
@@ -18,8 +20,6 @@ function removeFooter(){
 <!-- Uncomment below i you want to use a preloader -->
 <!-- <div id="preloader"></div> -->
 <!-- JavaScript Libraries -->
-<script src="lib/jquery/jquery.min.js"></script>
-<script src="lib/jquery/jquery-migrate.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="lib/easing/easing.min.js"></script>
 <script src="lib/mobile-nav/mobile-nav.js"></script>
