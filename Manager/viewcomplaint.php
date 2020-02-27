@@ -35,7 +35,6 @@ $q='SELECT * FROM complaint where manager_id='.$_SESSION['login_admin_id'];
                 <tr>
                   <th>Title</th>
 				  <th>Category</th>
-				   <th>Sub-Category</th>
 				  <th>Status</th>
 				  <th>Location</th>
                 </tr>
@@ -60,10 +59,19 @@ $q='SELECT * FROM complaint where manager_id='.$_SESSION['login_admin_id'];
                  <tr>
                  <!--td> <!--?php echo  $result['user_id'];?> </td-->
                 <td> <?php echo  $result ['title'];?> </td>
-                  <td><?php echo $result ['category_name'];?></td>
-                  <td><?php echo $result ['subcategory_name'];?></td>
+                  <td><?php
+                                        $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
+                                        $data1 = mysqli_query($conn, $q);
+                                        $result1 = mysqli_fetch_array($data1);
+                                        echo $result1['name'];
+                                        ?></td>
 				  <td><?php echo $result ['status'];?></td>
-				  <td><?php echo $result ['location'];?></td>
+				  <td>  <?php if ($result ['location'] != NULL) {
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
 				  <td><a href="viewmore.php?id=<?php echo $result['complaint_id'];?>" class="btn_1 gray edits">View More</a></td>
 				  <!--td>
                     <a href="useredit.php?id=<--?php echo $result['user_id'];?>" class="btn_1 gray edits">Edit</a>
@@ -94,7 +102,7 @@ $q='SELECT * FROM complaint where manager_id='.$_SESSION['login_admin_id'];
          <center>
                   <?php
                 
-                         $s="SELECT count(*) AS a FROM complaint";
+                         $s="SELECT count(*) AS a FROM complaint where manager_id=".$_SESSION['login_admin_id'];
                  $sql=mysqli_query($conn,$s);
                 while($row = $sql->fetch_assoc())
 
@@ -163,7 +171,7 @@ $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1;
     });
   });
 });

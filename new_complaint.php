@@ -27,7 +27,15 @@
           <div class="form-group row">
             <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="Category" name="category" required>
+                    <?php include 'getConn.php';
+               $s = 'SELECT * FROM category';
+               $sql=mysqli_query($conn,$s);
+               echo "<select name=\"category\" class=\"form-control\">";
+               while($row = mysqli_fetch_assoc($sql))
+               {echo "<option value='" . $row['category_id'] ."'>" . $row['name']."</option>";
+               }
+               echo "</select>";
+              ?>
             </div>
           </div>
           <div class="form-group row">
@@ -170,7 +178,7 @@
       e.preventDefault();
       var form_data = new FormData(this);
       if($("#allowloc").is(":checked")){
-        getAddr();
+        //getAddr();
         form_data.set("cords", latlng);
       }
       $.ajax({
