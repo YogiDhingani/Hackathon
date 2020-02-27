@@ -1322,7 +1322,7 @@ h6 {
 #form {
   width: 100%;
   position: relative;
-  padding: 100px 0px 100px 0px;
+  padding: 100px 0 100px 0;
 }
 
 /* vertical divider */
