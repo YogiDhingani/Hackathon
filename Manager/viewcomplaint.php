@@ -35,7 +35,6 @@ $q='SELECT * FROM complaint where manager_id='.$_SESSION['login_admin_id'];
                 <tr>
                   <th>Title</th>
 				  <th>Category</th>
-				   <th>Sub-Category</th>
 				  <th>Status</th>
 				  <th>Location</th>
                 </tr>
@@ -61,7 +60,6 @@ $q='SELECT * FROM complaint where manager_id='.$_SESSION['login_admin_id'];
                  <!--td> <!--?php echo  $result['user_id'];?> </td-->
                 <td> <?php echo  $result ['title'];?> </td>
                   <td><?php echo $result ['category_name'];?></td>
-                  <td><?php echo $result ['subcategory_name'];?></td>
 				  <td><?php echo $result ['status'];?></td>
 				  <td><?php echo $result ['location'];?></td>
 				  <td><a href="viewmore.php?id=<?php echo $result['complaint_id'];?>" class="btn_1 gray edits">View More</a></td>
@@ -94,7 +92,7 @@ $q='SELECT * FROM complaint where manager_id='.$_SESSION['login_admin_id'];
          <center>
                   <?php
                 
-                         $s="SELECT count(*) AS a FROM complaint";
+                         $s="SELECT count(*) AS a FROM complaint where manager_id=".$_SESSION['login_admin_id'];
                  $sql=mysqli_query($conn,$s);
                 while($row = $sql->fetch_assoc())
 
@@ -163,7 +161,7 @@ $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1;
     });
   });
 });
