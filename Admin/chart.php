@@ -30,7 +30,7 @@
                       is3D:true,  
                       //pieHole: 0.4  
                      };  
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));  
+                var chart = new google.visualization.BarChart(document.getElementById('piechart'));  
                 chart.draw(data, options);  
            }  
            </script>  
