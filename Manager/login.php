@@ -60,7 +60,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
     <div id="login">
-        <br><br><center><h1 style="color:#17A2bb">Welcome Manage</h1></center><br><br>
+        <br><br><center><h1 style="color:#17A2bb">Welcome Manager</h1></center><br><br>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
