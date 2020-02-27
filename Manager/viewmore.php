@@ -69,7 +69,6 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 				</tr>
 								<tr>
 					<td>complaint_file</td>
-					<td>					<td>complaint_file</td>
 					<td>
                                         <?php if($result ['complaint_file']!=NULL){
                                                 echo "<a href=".$result ['complaint_file'].">See file</a>";

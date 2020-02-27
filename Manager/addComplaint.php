@@ -38,7 +38,7 @@ include("config2.php");
   //echo $id;
 
   if($par === "not"){
-    $sql = "Update complaint set solution_detail='$description', status='Completed' where complaint_id=$id";
+    $sql = "Update complaint set solution_detail='$description', status='Completed',solution_date=date_create()->format('Y-m-d H:i:s') where complaint_id=$id";
   }else{
     $sql = "Update complaint set solution_detail='$description',solution_file='$par',status='Completed' where complaint_id=$id";
   }
