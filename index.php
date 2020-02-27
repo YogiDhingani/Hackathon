@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="android.js"></script>
 <body>
   <?php
-  session_start();
-  if(!isset($_SESSION['user_id'])){
-    echo '<script type="text/javascript">performLogout();</script>';
-  }
+  // session_start();
+  // if(!isset($_SESSION['user_id'])){
+  //   echo '<script type="text/javascript">performLogout();</script>';
+  // }
   include("header.php");
   ?>
   <!--==========================

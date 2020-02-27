@@ -13,14 +13,7 @@
 }
 </style>
 <body>
-  <?php
-  session_start();
-  if(!isset($_SESSION['user_id'])){
-    die("Do Login First");
-  }
-  $_SESSION['user_id']=$_SESSION['user_id'];
-  include ("header.php");
-  ?>
+  <?php include ("header.php");?>
   <section id="form" class="clearfix">
     <div class="container">
       <div class="intro-img">
@@ -75,7 +68,6 @@
     </div>
   </section>
   <script>
-
   $('#googleMap').hide();
 
   $(function() {
@@ -203,7 +195,6 @@
         }
       });
     });
-
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1ueM5KXgAfUah9ju6xGR-oTydVdubnXE&callback=initMap"></script>
