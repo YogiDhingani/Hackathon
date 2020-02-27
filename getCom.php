@@ -4,9 +4,9 @@ include('getConn.php');
 $user = $_SESSION['user_id'];
 $sql = "SELECT * FROM complaint where user_id = $user";
 $result = $conn->query($sql);
-if (count($result->num_rows)) {
-    $coms = array();
 
+if ($result->num_rows > 0) {
+  $coms = array();
   while($row = mysqli_fetch_array($result)) {
     $com = array();
     $com['id'] = $row["complaint_id"];
@@ -37,12 +37,14 @@ if (count($result->num_rows)) {
       $com['sol_det'] = $row["solution_detail"];
     else
       $com['sol_det'] = "Your request is still pending";
-      
+
     $com['status'] = $row["status"];
     $com['date'] = $row["creation_date"];
     array_push($coms,$com);
   }
   echo json_encode($coms);
+}else{
+  echo json_encode("no data");
 }
 
 ?>
