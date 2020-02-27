@@ -25,14 +25,15 @@ if (isset($_POST['submit'])) {
         echo "document.getElementById('cpassword').value = '';";
         echo "</script> ";
     } else {
-
+            
+        $pass = md5($password);
         $sql = "SELECT manager_id FROM manager WHERE email_id = '$eid'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             echo '<script type="text/javascript">alert("Email already used before");</script>';
             exit();
         } else {
-            $sql = "INSERT INTO manager (name,email_id,phone_no,category,city,password) VALUES ('$name', '$email_id','$phone_no','$category','$city','$password')";
+            $sql = "INSERT INTO manager (name,email_id,phone_no,category,city,password) VALUES ('$name', '$email_id','$phone_no','$category','$city','$pass')";
             if (mysqli_query($conn, $sql)) {
                 echo "<script>alert('Registered Successfully');</script>";
                 header('Location:viewmanager.php');
@@ -121,10 +122,10 @@ if (isset($_POST['submit'])) {
                                 <select name="category" id="category" class="form-control" required="">
                                     <option value="">Select Category</option>
                                     <?php
-                                    $sql1 = "SELECT name FROM category";
+                                    $sql1 = "SELECT * FROM category";
                                     $rescat = mysqli_query($conn, $sql1) or die(mysqli_error($conn));
                                     while ($cat = mysqli_fetch_array($rescat)) {
-                                        echo '<option value="' . $cat['name'] . '"';
+                                        echo '<option value="' . $cat['category_id'] . '"';
                                         echo '>' . $cat['name'] . '</option>';
                                     }
                                     ?>
