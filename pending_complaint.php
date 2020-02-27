@@ -26,9 +26,11 @@ $(document).ready(function() {
     dataType: 'json',
     success: function(res) {
       //alert(res);
-      //console.log(res);
+      console.log(res);
       // var data = $.parseJSON(res);
-      if(res!=null){
+      if(res=="no data"){
+        $("#populate").append(`<h4 style="margin-top:20px;">No complaints found</h4>`);
+      }else if(res!=null){
         $.each(res, function(k,v) {
           //console.log(v.title);
           $("#populate").append(`<div id="accordion${v.id}">
