@@ -46,6 +46,11 @@ if ($result->num_rows > 0) {
       $com['sol_det'] = $row["solution_detail"];
     else
       $com['sol_det'] = "Your request is still pending";
+    
+    if($row["review"] != NULL)
+      $com['review'] = $row["review"];
+    else
+      $com['review'] = "not";
 
     $com['status'] = $row["status"];
     $com['date'] = $row["creation_date"];
