@@ -150,32 +150,32 @@
                 <div class="owl-carousel testimonials-carousel wow fadeInUp">
 
                   <div class="testimonial-item">
-                    <img src="img/testimonial-1.jpg" class="testimonial-img" alt="">
-                    <h3>Saul Goodman</h3>
-                    <h4>Ceo &amp; Founder</h4>
+                    <img src="img/testimonial-1.JPG" class="testimonial-img" alt="">
+                    <h3>Rajesh S.</h3>
+                    <h4>Senior Web Developer</h4>
                     <p>
-                      Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                     Comssols is the leading complaint management website built for better customer relationships. Easily solve tickets and track customer complaints. many people uses comssols to lower their support costs and increase customer satisfaction.
                     </p>
                   </div>
 
                   <div class="testimonial-item">
-                    <img src="img/testimonial-2.jpg" class="testimonial-img" alt="">
-                    <h3>Sara Wilsson</h3>
-                    <h4>Designer</h4>
+                    <img src="img/testimonial-2.jpeg" class="testimonial-img" alt="">
+                    <h3>Rohan B.</h3>
+                    <h4>Director</h4>
                     <p>
-                      Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                      Comssols is a web based customer service website hosted on the cloud. It helps to track and manage all customer support requests across all areas in a centralized ticket support system. tracking complaints makes it practical help desk. Similar customer support queries can be handled using canned actions and smart rules to automate responses. Community forums help customers connect.
                     </p>
                   </div>
 
                   <div class="testimonial-item">
-                    <img src="img/testimonial-3.jpg" class="testimonial-img" alt="">
-                    <h3>Jena Karlis</h3>
-                    <h4>Store Owner</h4>
+                    <img src="img/testimonial-3.JPG" class="testimonial-img" alt="">
+                    <h3>Nilesh b.</h3>
+                    <h4>IT Service Desk Specialist I</h4>
                     <p>
-                      Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                    Comssols is an Complaint Management helpdesk, with a fresh twist. The websites puts a refreshing user experience on top of powerful ticketing and asset management capabilities like auto-discovery of new resources, powerful configuration management and enhanced impact analysis. Incident, Problem, Change, Release & Knowledge Management are amongst the other features that make Freshservice, a perfect fit for your organization's needs. 
                     </p>
                   </div>
-
+                  	<!--
                   <div class="testimonial-item">
                     <img src="img/testimonial-4.jpg" class="testimonial-img" alt="">
                     <h3>Matt Brandon</h3>
@@ -192,7 +192,7 @@
                     <p>
                       Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
                     </p>
-                  </div>
+                  </div-->
 
                 </div>
 

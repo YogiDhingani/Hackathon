@@ -63,17 +63,28 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 					<td>Category</td>
 					<td><?php echo $result ['category_name'];?></td>
 				</tr>
-	
 								<tr>
 					<td>complaint_detail</td>
 					<td><?php echo $result ['complaint_detail'];?></td>
 				</tr>
-								<tr>
+				<tr>
 					<td>complaint_file</td>
-					<td><?php echo $result ['complaint_file'];?></td>
+					<td>
+                                        <?php if($result ['complaint_file']!=NULL){
+                                                echo "<a href=".$result ['complaint_file'].">See file</a>";
+                                            }else{
+                                                echo "No Complaint file exist";
+                                            }
+                                        ?></td>
+                                        
 				</tr>				<tr>
 					<td>location</td>
-					<td><?php echo $result ['location'];?></td>
+					<td> <?php if ($result ['location'] != NULL) {
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
 				</tr>
 			
 				<tr>
@@ -88,10 +99,10 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 					<td>creation_date</td>
 					<td><?php echo $result ['creation_date'];?></td>
 				</tr>
-								<tr>
+								<!--tr>
 					<td>solution_date</td>
-					<td><?php echo $result ['solution_date'];?></td>
-				</tr>
+					<td><?--php echo $result ['solution_date'];?></td>
+				</tr-->
 				<tr>
 					<td>User</td>
 					<td><?php $q1="SELECT name FROM user where user_id=".$result['user_id'];

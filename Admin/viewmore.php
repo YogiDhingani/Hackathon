@@ -69,10 +69,20 @@ $data = mysqli_query($conn, $q);
                                     </tr>
                                     <tr>
                                         <td>complaint_file</td>
-                                        <td><?php echo $result ['complaint_file']; ?></td>
+                                        <td>    <?php if($result ['complaint_file']!=NULL){
+                                                echo "<a href=".$result ['complaint_file'].">See file</a>";
+                                            }else{
+                                                echo "No Complaint file exist";
+                                            }
+                                        ?></td>
                                     </tr>				<tr>
                                         <td>location</td>
-                                        <td><?php echo $result ['location']; ?></td>
+                                        <td> <?php if ($result ['location'] != NULL) {
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
                                     </tr>
 
                                     <tr>
@@ -118,7 +128,7 @@ $data = mysqli_query($conn, $q);
                                   </td-->      
                                     </tr>
 
-    <?php $j++; ?>
+                                    <?php $j++; ?>
                                 <script type="text/javascript">
                                     function val()
                                     {
@@ -132,7 +142,7 @@ $data = mysqli_query($conn, $q);
 
 
 
-<?php } ?>
+                            <?php } ?>
                             </tbody>
                         </table>
 
@@ -200,14 +210,14 @@ $data = mysqli_query($conn, $q);
     <!-- Custom scripts for this page-->
     <script src="js/admin-datatables.js"></script>
     <script>
-                       $(document).ready(function () {
-                           $("#myInput").on("keyup", function () {
-                               var value = $(this).val().toLowerCase();
-                               $("#myTable tr").filter(function () {
-                                   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                               });
-                           });
-                       });
+                                $(document).ready(function () {
+                                    $("#myInput").on("keyup", function () {
+                                        var value = $(this).val().toLowerCase();
+                                        $("#myTable tr").filter(function () {
+                                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                        });
+                                    });
+                                });
     </script>
 </body>
 </html>
