@@ -79,7 +79,12 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
                                         
 				</tr>				<tr>
 					<td>location</td>
-					<td><?php echo $result ['location'];?></td>
+					<td> <?php if ($result ['location'] != NULL) {
+                                                echo $result ['location'];
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
 				</tr>
 			
 				<tr>
@@ -94,10 +99,10 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 					<td>creation_date</td>
 					<td><?php echo $result ['creation_date'];?></td>
 				</tr>
-								<tr>
+								<!--tr>
 					<td>solution_date</td>
 					<td><?php echo $result ['solution_date'];?></td>
-				</tr>
+				</tr-->
 				<tr>
 					<td>User</td>
 					<td><?php $q1="SELECT name FROM user where user_id=".$result['user_id'];
