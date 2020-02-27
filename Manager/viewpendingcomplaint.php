@@ -62,7 +62,7 @@ header('Location:login.php');
                   <td><?php echo $result ['category_name'];?></td>
 				  <td><?php echo $result ['status'];?></td>
 				  <td> <?php if ($result ['location'] != NULL) {
-                                                echo $result ['location'];
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
                                             } else {
                                                 echo "No location specified";
                                             }

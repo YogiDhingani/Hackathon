@@ -80,7 +80,7 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 				</tr>				<tr>
 					<td>location</td>
 					<td> <?php if ($result ['location'] != NULL) {
-                                                echo $result ['location'];
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
                                             } else {
                                                 echo "No location specified";
                                             }
