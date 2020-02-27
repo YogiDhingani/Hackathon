@@ -20,7 +20,7 @@
       <div class="intro-info">
         <form method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search" name="search">
+            <input type="text" class="form-control" placeholder="  Search" name="search">
             <input class="btn btn-success" type="submit" name="submit" value="Search">
           </div>
         </form>
@@ -34,7 +34,9 @@
     ============================-->
     <section id="about" style="padding:10px 0;">
       <header class="section-header">
+          <hr>
         <h4 style="text-align:center;">Some recent topics</h4>
+        <hr>
       <header class="section-header">
       <?php
       if(isset($_POST['submit'])){
@@ -46,7 +48,7 @@
         if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
             ?>
-            <div class="container" style="margin-top: 100px;">
+            <div class="container" style="margin-top: 50px;">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                   <div class="header" style="background-color:#004a99; color:#fff">
@@ -78,7 +80,7 @@
 
       <div class="row about-extra">
         <?php include 'getConn.php';
-        $s = 'SELECT title,complaint_id FROM complaint where status="completed"';
+        $s = 'SELECT * FROM complaint where status="completed"';
         $sql=mysqli_query($conn,$s);
         while($row = mysqli_fetch_assoc($sql))
         {?>
