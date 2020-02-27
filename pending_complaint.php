@@ -106,18 +106,21 @@ $(document).ready(function() {
           if(v.sol_file!="No file found"){
             $('#doc'+v.id).append(`<p class="card-text">Solution file:<a href="${v.sol_file}"> GetFile</a></p>`);
           }
-          if(v.sol_det == "Your request is still pending")
+          if(v.status == "Completed")
           {
-            $('#sol'+v.id).append(`<button class="btn btn-secondary"  type="button" value="Satisfied with Solution" name="satisfied">Satisfied with Solution</button> <button class="btn btn-secondary" value="Not Satisfied" name="not_satisfied" onclick="not_satisfied()">Not Satisfied</button>`);
+            $('#sol'+v.id).append(`<button class="btn btn-secondary"  type="button" value="Satisfied with Solution" name="satisfied">Satisfied with Solution</button> <button class="btn btn-secondary" value="Not Satisfied" name="not_satisfied" onclick="not_satisfied(${v.id})">Not Satisfied</button>`);
           }
+          
         });
       }
     }
   });
 });
-function not_satisfied() {
- $('#sol'+v.id).append('<textarea type="text" rows="5" class="form-control" placeholder="Why?" name="review"></textarea>');
+function not_satisfied(id) {
+ $('#sol'+id).append(`<br><br><form method="post" action="review.php"><textarea id="review${id}" type="text" rows="5" class="form-control" placeholder="Tell Us Reason" name="review${id}" required></textarea>`);
+ $('#sol'+id).append(`<br><input type="hidden" name="id" value="${id}"/><input type="submit" class="btn btn-secondary" value="submit" onclick="sendReview(${id})"></input></form>`);
 }
+
 function sendComm(id){
   $.ajax({
     type: 'POST',
@@ -128,6 +131,23 @@ function sendComm(id){
       if(res==="success"){
         setInterval('location.reload()', 500);
         alert("Comment added");
+      }
+    },
+  });
+}
+
+function sendReview(cid){
+  $.ajax({
+    type: 'POST',
+    url: 'review.php',
+    cache: false,
+    data: {review: $('#review'+cid).val(), id: cid},
+    success: function(res) {
+      if(res==="success"){
+        setInterval('location.reload()', 500);
+        alert("Review submitted");
+      }else{
+          console.log(res);
       }
     },
   });
