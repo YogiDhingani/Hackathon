@@ -118,7 +118,7 @@ $data = mysqli_query($conn, $q);
                                   </td-->      
                                     </tr>
 
-    <?php $j++; ?>
+                                    <?php $j++; ?>
                                 <script type="text/javascript">
                                     function val()
                                     {
@@ -132,7 +132,7 @@ $data = mysqli_query($conn, $q);
 
 
 
-<?php } ?>
+                            <?php } ?>
                             </tbody>
                         </table>
 
@@ -200,14 +200,14 @@ $data = mysqli_query($conn, $q);
     <!-- Custom scripts for this page-->
     <script src="js/admin-datatables.js"></script>
     <script>
-                       $(document).ready(function () {
-                           $("#myInput").on("keyup", function () {
-                               var value = $(this).val().toLowerCase();
-                               $("#myTable tr").filter(function () {
-                                   $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                               });
-                           });
-                       });
+                                $(document).ready(function () {
+                                    $("#myInput").on("keyup", function () {
+                                        var value = $(this).val().toLowerCase();
+                                        $("#myTable tr").filter(function () {
+                                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                        });
+                                    });
+                                });
     </script>
 </body>
 </html>

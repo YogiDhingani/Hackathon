@@ -61,7 +61,12 @@ $data = mysqli_query($conn, $q);
                                         <td> <?php echo $result ['title']; ?> </td>
                                         <td><?php echo $result ['category_name']; ?></td>
                                         <td><?php echo $result ['status']; ?></td>
-                                        <td><?php echo $result ['location']; ?></td>
+                                        <td> <?php if ($result ['location'] != NULL) {
+                                                echo $result ['location'];
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
                                         <td><a href="viewmore.php?id=<?php echo $result['complaint_id']; ?>" class="btn_1 gray edits">View More</a></td>
                                         <!--td>
                           <a href="useredit.php?id=<--?php echo $result['user_id'];?>" class="btn_1 gray edits">Edit</a>
