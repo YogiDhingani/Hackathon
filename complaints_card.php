@@ -21,6 +21,9 @@
     echo" <small>";
     echo"<b>Complaint : </b>";
     echo $row['complaint_detail'];
+	echo "<b>Status:</b>";
+	echo $row['status'];
+			
     echo"</small>";
 	?>
     </div>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+		<link href="sunilcss/style.css" rel="stylesheet"/>
+</head>
 <body>
   <?php
   // session_start();
@@ -14,10 +17,17 @@
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Search">
-          <button class="btn btn-success" type="button">Search</button>
-        </div>
+		<form method="post" >
+		<div class="form-group row">
+			<div class="col-sm-10 col-md-10 col-xl-10 col-xs-10">
+				<input type="text" class="form-control" placeholder="Search" name="search">
+			</div>			
+			<div class="col-sm-	1">
+				<input style="text-align:center" type="submit" class="btn btn-success"  name="submit" value="Search">
+			</div>
+			</div>
+		 </form> 
+        
       </div>
     </div>
   </section><!-- #intro -->
@@ -28,7 +38,51 @@
     ============================-->
     <section id="about">
       <header class="section-header">
-        <h4 style="text-align:center;">Some recent topics</h4>
+        <!-- <h4 style="text-align:center;">Some recent topics</h4> -->
+		
+		<?php  
+		if(isset($_POST['submit'])){
+			$search= $_POST['search'];
+			 include 'getConn.php';
+								$sql = "SELECT * FROM complaint WHERE title = '$search' or category_name = '$search'";
+								$result = $conn->query($sql);
+								if ($result->num_rows > 0) {
+								while($row = $result->fetch_assoc()) {
+							
+		?>
+		
+		
+		<div class="container" style="margin-top: 100px;">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			
+		<div class="card">
+                        <div class="header" style="background-color:#004a99; color:#fff">
+                        	<?php
+                        		echo"<h4 style=\"color:#fff;\">";
+								echo "<b>Title : </b>";
+								echo $row['title'];
+								echo"</h4>";
+								echo" <small>";
+								echo"<b>Complaint : </b>";
+								echo $row['complaint_detail'];
+								echo "</br>";
+								echo "<b>Status:</b>";
+								echo $row['status'];
+								echo"</small>";
+								?>
+								</div>
+								<div class="body">
+								<?php 
+								echo"<b>Solution : </b>";
+								echo $row['solution_detail'];?>
+								</div>
+								</div>
+								</div>
+							</div>
+							 
+			<?php
+		}	}}?>
+		</table>
       </header>
 
       <div class="row about-extra">
@@ -152,7 +206,8 @@
       <!--==========================
       Footer
       ============================-->
-      <?php include("footer.php");?>
+      <?php include("footer.php");	  
+	  ?>
 
     </body>
     </html>
