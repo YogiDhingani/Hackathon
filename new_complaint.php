@@ -178,7 +178,7 @@
       e.preventDefault();
       var form_data = new FormData(this);
       if($("#allowloc").is(":checked")){
-        getAddr();
+        //getAddr();
         form_data.set("cords", latlng);
       }
       $.ajax({
