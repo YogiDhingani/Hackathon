@@ -92,7 +92,7 @@ $q='SELECT * FROM complaint where manager_id='.$_SESSION['login_admin_id'];
          <center>
                   <?php
                 
-                         $s="SELECT count(*) AS a FROM complaint";
+                         $s="SELECT count(*) AS a FROM complaint where manager_id=".$_SESSION['login_admin_id'];
                  $sql=mysqli_query($conn,$s);
                 while($row = $sql->fetch_assoc())
 
@@ -161,7 +161,7 @@ $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1;
     });
   });
 });
