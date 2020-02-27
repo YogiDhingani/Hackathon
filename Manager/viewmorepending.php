@@ -61,7 +61,12 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 				</tr>
 				<tr>
 					<td>Category</td>
-					<td><?php echo $result ['category_name'];?></td>
+					<td><?php
+                                        $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
+                                        $data1 = mysqli_query($conn, $q);
+                                        $result1 = mysqli_fetch_array($data1);
+                                        echo $result1['name'];
+                                        ?></td>
 				</tr>
 								<tr>
 					<td>complaint_detail</td>
@@ -80,7 +85,7 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 				</tr>				<tr>
 					<td>location</td>
 					<td> <?php if ($result ['location'] != NULL) {
-                                                echo $result ['location'];
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
                                             } else {
                                                 echo "No location specified";
                                             }
@@ -101,7 +106,7 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 				</tr>
 								<!--tr>
 					<td>solution_date</td>
-					<td><?php echo $result ['solution_date'];?></td>
+					<td><?--php echo $result ['solution_date'];?></td>
 				</tr-->
 				<tr>
 					<td>User</td>

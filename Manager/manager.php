@@ -30,7 +30,7 @@ $j = 1;
 $i = 0;
 $q = 'SELECT * FROM manager where manager_id=' . $_SESSION['login_admin_id'];
 $data = mysqli_query($conn, $q);
-$result = mysqli_fetch_array($data)
+$result = mysqli_fetch_array($data);
 ?>
 <!-- /Navigation-->
 <div class="content-wrapper">
@@ -104,7 +104,12 @@ $result = mysqli_fetch_array($data)
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Category</label>
-                                <input type="text" id="category" value="<?php echo $result['category'] ?>" name="category" minlength="2" required="" class="form-control" placeholder="category" readonly>
+                                <input type="text" id="category" value="<?php
+                                $q = 'SELECT * FROM category where category_id=' . $result['category'];
+                                $data1 = mysqli_query($conn, $q);
+                                $result1 = mysqli_fetch_array($data1);
+                                echo $result1['name'];
+                                ?>" name="category" minlength="2" required="" class="form-control" placeholder="category" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -11,7 +11,7 @@ if (isset($_POST['Submit'])) {
     // username and password sent from form 
 
     $myusername = mysqli_real_escape_string($conn, $_POST['email']);
-    $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
+    $mypassword = md5(mysqli_real_escape_string($conn, $_POST['password']));
 
     $query = "SELECT * FROM admin WHERE email_id = '$myusername' and password = '$mypassword'";
     $run = mysqli_query($conn, $query);

@@ -61,7 +61,12 @@ $data = mysqli_query($conn, $q);
                                     </tr>
                                     <tr>
                                         <td>Category</td>
-                                        <td><?php echo $result ['category_name']; ?></td>
+                                        <td><?php
+                                        $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
+                                        $data1 = mysqli_query($conn, $q);
+                                        $result1 = mysqli_fetch_array($data1);
+                                        echo $result1['name'];
+                                        ?></td>
                                     </tr>
                                     <tr>
                                         <td>complain_detail</td>
@@ -69,10 +74,20 @@ $data = mysqli_query($conn, $q);
                                     </tr>
                                     <tr>
                                         <td>complaint_file</td>
-                                        <td><?php echo $result ['complaint_file']; ?></td>
+                                        <td>    <?php if($result ['complaint_file']!=NULL){
+                                                echo "<a href=".$result ['complaint_file'].">See file</a>";
+                                            }else{
+                                                echo "No Complaint file exist";
+                                            }
+                                        ?></td>
                                     </tr>				<tr>
                                         <td>location</td>
-                                        <td><?php echo $result ['location']; ?></td>
+                                        <td> <?php if ($result ['location'] != NULL) {
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
                                     </tr>
 
                                     <tr>

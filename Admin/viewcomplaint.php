@@ -59,15 +59,19 @@ $data = mysqli_query($conn, $q);
                                     <tr>
                                         <!--td> <!--?php echo  $result['user_id'];?> </td-->
                                         <td> <?php echo $result ['title']; ?> </td>
-                                        <td><?php echo $result ['category_name']; ?></td>
-                                        <td><?php echo $result ['subcategory_name']; ?></td>
+                                        <td><?php
+                                        $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
+                                        $data1 = mysqli_query($conn, $q);
+                                        $result1 = mysqli_fetch_array($data1);
+                                        echo $result1['name'];
+                                        ?></td>
                                         <td><?php echo $result ['status']; ?></td>
                                         <td> <?php if ($result ['location'] != NULL) {
-                                                echo $result ['location'];
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
                                             } else {
                                                 echo "No location specified";
                                             }
-                                            ?>></td>
+                                            ?></td>
                                         <td><a href="viewmore.php?id=<?php echo $result['complaint_id']; ?>" class="btn_1 gray edits">View More</a></td>
                                         <!--td>
                           <a href="useredit.php?id=<--?php echo $result['user_id'];?>" class="btn_1 gray edits">Edit</a>
