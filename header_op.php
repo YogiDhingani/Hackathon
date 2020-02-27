@@ -25,6 +25,9 @@
 <!-- Main Stylesheet File -->
 <link href="css/style.css" rel="stylesheet">
 
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery/jquery-migrate.min.js"></script>
+
 <script type="text/javascript">
 function removeIncl(){
   var el = document.getElementById("header");
@@ -57,8 +60,8 @@ function removeIncl(){
     <nav class="main-nav float-right d-none d-lg-block">
       <ul>
         <li class="active"><a href="index.php">Home</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      	 <li><a href="#about">About Us</a></li>
+        <li><a href="ContactUs.php">Contact Us</a></li>
+      	 <li><a href="AboutUs.php">About Us</a></li>
       </ul>
     </nav>
   </div>

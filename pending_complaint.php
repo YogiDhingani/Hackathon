@@ -1,8 +1,6 @@
 <html>
 <?php include ("header.php");?>
 <body>
-
-
   <section id ="form" class="clearfix">
     <div class="container" id="populate">
     </div>

@@ -26,13 +26,20 @@
 
 <!-- Main Stylesheet File -->
 <link href="css/style.css" rel="stylesheet">
-
+<script src="android.js"></script>
 <script type="text/javascript">
 function removeIncl(){
   var el = document.getElementById("header");
   el.parentNode.removeChild(el);
   var el2 = document.getElementsByClassName("mobile-nav-toggle");
   el2[0].parentNode.removeChild(el2[0]);
+}
+
+function logout(){
+  var r = confirm("You want to logout?");
+  if(r){
+    window.location.href="logout.php";
+  }
 }
 </script>
 <?php
@@ -73,7 +80,7 @@ if(!isset($_SESSION['user_id'])){
       	  <li><a href="ProfileDB.php">Profile</a></li>
           <li><a href="ContactUs.php">Contact Us</a></li>
       	  <li><a href="AboutUs.php">About Us</a></li>
-      	  <li><a href="logout.php">Log Out</a></li>
+      	  <li><a href="#" onclick="logout()">Log Out</a></li>
       </ul>
     </nav>
   </div>

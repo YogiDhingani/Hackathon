@@ -13,7 +13,7 @@
 }
 </style>
 <body>
-  <?phpinclude ("header.php");?>
+  <?php include ("header.php");?>
   <section id="form" class="clearfix">
     <div class="container">
       <div class="intro-img">
@@ -68,7 +68,6 @@
     </div>
   </section>
   <script>
-
   $('#googleMap').hide();
 
   $(function() {
@@ -196,7 +195,6 @@
         }
       });
     });
-
     </script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1ueM5KXgAfUah9ju6xGR-oTydVdubnXE&callback=initMap"></script>

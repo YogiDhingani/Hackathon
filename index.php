@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="android.js"></script>
 <body>
   <?php
   // session_start();
