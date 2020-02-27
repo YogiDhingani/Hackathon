@@ -69,10 +69,22 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 				</tr>
 								<tr>
 					<td>complaint_file</td>
-					<td><?php echo $result ['complaint_file'];?></td>
+					<td>					<td>complaint_file</td>
+					<td>
+                                        <?php if($result ['complaint_file']!=NULL){
+                                                echo "<a href=".$result ['complaint_file'].">See file</a>";
+                                            }else{
+                                                echo "No Complaint file exist";
+                                            }
+                                        ?></td></td>
 				</tr>				<tr>
 					<td>location</td>
-					<td><?php echo $result ['location'];?></td>
+					<td> <?php if ($result ['location'] != NULL) {
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
 				</tr>
 			
 				<tr>

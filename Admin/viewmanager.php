@@ -64,7 +64,12 @@ $data = mysqli_query($conn, $q);
                                     <td> <?php echo $result['name']; ?> </td>
                                     <td> <?php echo $result ['email_id']; ?> </td>
                                     <td><?php echo $result ['phone_no']; ?></td>
-                                    <td><?php echo $result['category']; ?></td>
+                                    <td><?php
+                                $q = 'SELECT * FROM category where category_id=' . $result['category'];
+                                $data1 = mysqli_query($conn, $q);
+                                $result1 = mysqli_fetch_array($data1);
+                                echo $result1['name'];
+                                ?> </td>
                                     <td><?php echo $result['city']; ?></td>
                                     <td><?php echo $result ['total_complaint']; ?></td>
                                     <td><?php echo $result ['pending_complaint']; ?></td>

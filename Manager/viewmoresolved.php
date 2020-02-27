@@ -81,7 +81,7 @@ $data = mysqli_query($conn, $q);
                                             }
                                             ?></td>
                                     </tr>
-                                        <tr>
+                                    <tr>
                                         <td>Solution_file</td>
                                         <td><?php
                                             if ($result ['solution_file'] != NULL) {
@@ -93,7 +93,12 @@ $data = mysqli_query($conn, $q);
                                     </tr>
                                     <tr>
                                         <td>location</td>
-                                        <td><?php echo $result ['location']; ?></td>
+                                        <td> <?php if ($result ['location'] != NULL) {
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
                                     </tr>
 
                                     <tr>
@@ -142,14 +147,14 @@ $data = mysqli_query($conn, $q);
 
 
 
-<?php } ?>
-      </tbody>
-      </table>
+                                <?php } ?>
+  </tbody>
+  </table>
 
-    </div>
-      </div>
-     
-    </div>
+</div>
+  </div>
+ 
+</div>
                                 <!-- /tables-->
                                 </div>
                                 <!-- /container-fluid-->
