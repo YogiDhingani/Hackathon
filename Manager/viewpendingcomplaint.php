@@ -35,7 +35,6 @@ header('Location:login.php');
                 <tr>
                   <th>Title</th>
 				  <th>Category</th>
-				   <th>Sub-Category</th>
 				  <th>Status</th>
 				  <th>Location</th>
                 </tr>
@@ -61,7 +60,6 @@ header('Location:login.php');
                  <!--td> <!--?php echo  $result['user_id'];?> </td-->
                 <td> <?php echo  $result ['title'];?> </td>
                   <td><?php echo $result ['category_name'];?></td>
-                  <td><?php echo $result ['subcategory_name'];?></td>
 				  <td><?php echo $result ['status'];?></td>
 				  <td><?php echo $result ['location'];?></td>
 				  <td><a href="viewmorepending.php?id=<?php echo $result['complaint_id'];?>" class="btn_1 gray edits">View More</a></td>
@@ -94,7 +92,7 @@ header('Location:login.php');
          <center>
                   <?php
                 
-                         $s='SELECT count(*) As a FROM complaint where status="Pending"';
+                         $s='SELECT count(*) As a FROM complaint where status="Pending" and manager_id='.$_SESSION['login_admin_id'];
                  $sql=mysqli_query($conn,$s);
                 while($row = $sql->fetch_assoc())
 

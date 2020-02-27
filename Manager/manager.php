@@ -1,8 +1,5 @@
 
-<?php 		include 'config2.php';
-if (!isset($_SESSION['login_admin_id'])) {
-header('Location:login.php');
-}
+<?php 	include 'config2.php';	
 if(isset($_POST['submit'])){
 	$name = mysqli_real_escape_string($conn,$_POST['name']);
 	$email_id = mysqli_real_escape_string($conn, $_POST['email_id']);
@@ -23,7 +20,10 @@ if(isset($_POST['submit'])){
 
 ?>
 
-<?php include('admin_header.php'); ?>
+<?php 
+if (!isset($_SESSION['login_admin_id'])) {
+header('Location:login.php');
+}include('admin_header.php'); ?>
 <?php 
       $j=1; $i=0;
 		$q='SELECT * FROM manager where manager_id='.$_SESSION['login_admin_id'];

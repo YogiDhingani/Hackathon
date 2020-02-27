@@ -63,10 +63,6 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 					<td>Category</td>
 					<td><?php echo $result ['category_name'];?></td>
 				</tr>
-				<tr>
-					<td>Sub-Category</td>
-					<td><?php echo $result ['subcategory_name'];?></td>
-				</tr>
 								<tr>
 					<td>complaint_detail</td>
 					<td><?php echo $result ['complaint_detail'];?></td>
