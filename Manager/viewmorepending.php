@@ -101,7 +101,7 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 				</tr>
 								<!--tr>
 					<td>solution_date</td>
-					<td><?php echo $result ['solution_date'];?></td>
+					<td><?--php echo $result ['solution_date'];?></td>
 				</tr-->
 				<tr>
 					<td>User</td>

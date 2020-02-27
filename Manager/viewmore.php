@@ -79,7 +79,12 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
                                         ?></td></td>
 				</tr>				<tr>
 					<td>location</td>
-					<td><?php echo $result ['location'];?></td>
+					<td> <?php if ($result ['location'] != NULL) {
+                                                echo $result ['location'];
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
 				</tr>
 			
 				<tr>

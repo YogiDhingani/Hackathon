@@ -69,10 +69,20 @@ $data = mysqli_query($conn, $q);
                                     </tr>
                                     <tr>
                                         <td>complaint_file</td>
-                                        <td><?php echo $result ['complaint_file']; ?></td>
+                                        <td>    <?php if($result ['complaint_file']!=NULL){
+                                                echo "<a href=".$result ['complaint_file'].">See file</a>";
+                                            }else{
+                                                echo "No Complaint file exist";
+                                            }
+                                        ?></td>
                                     </tr>				<tr>
                                         <td>location</td>
-                                        <td><?php echo $result ['location']; ?></td>
+                                        <td> <?php if ($result ['location'] != NULL) {
+                                                echo $result ['location'];
+                                            } else {
+                                                echo "No location specified";
+                                            }
+                                            ?></td>
                                     </tr>
 
                                     <tr>
