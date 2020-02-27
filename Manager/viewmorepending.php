@@ -103,7 +103,13 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 								<tr>
 					<td>creation_date</td>
 					<td><?php echo $result ['creation_date'];?></td>
+                                        
+                                
 				</tr>
+                                <tr>
+                                        <td>Review</td>
+					<td><?php echo $result ['review'];?></td>
+                                        </tr>
 								<!--tr>
 					<td>solution_date</td>
 					<td><?--php echo $result ['solution_date'];?></td>
