@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <link rel="stylesheet" href="sunilcss/style.css">
+</head>
+
 <body>
   <?php
   // session_start();
@@ -14,14 +18,10 @@
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-        <form method="post" action="search.php">
-          <div class="form-group row">
-            <div class="col-sm-10 col-md-10 col-xl-10 col-xs-10">
-              <input type="text" class="form-control" placeholder="Search" name="search">
-            </div>
-            <div class="col-sm-	1">
-              <input style="text-align:center" type="submit" class="btn btn-success"  name="submit" value="Search">
-            </div>
+        <form method="post">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search" name="search">
+            <input class="btn btn-success" type="submit" name="submit" value="Search">
           </div>
         </form>
       </div>
@@ -32,9 +32,48 @@
     <!--==========================
     About Us Section
     ============================-->
-    <section id="about">
+    <section id="about" style="padding:10px 0;">
       <header class="section-header">
         <h4 style="text-align:center;">Some recent topics</h4>
+      <header class="section-header">
+      <?php
+      if(isset($_POST['submit'])){
+        $search= $_POST['search'];
+        include 'getConn.php';
+        $sql = "SELECT * FROM complaint WHERE title = '$search' or category_id = (SELECT
+        category_id from category where name = '$search')";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            ?>
+            <div class="container" style="margin-top: 100px;">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="header" style="background-color:#004a99; color:#fff">
+                    <?php
+                    echo"<h4 style=\"color:#fff;\">";
+                    echo "<b>Title : </b>";
+                    echo $row['title'];
+                    echo"</h4>";
+                    echo" <small>";
+                    echo"<b>Complaint : </b>";
+                    echo $row['complaint_detail'];
+                    echo "</br>";
+                    echo "<b>Status:</b>";
+                    echo $row['status'];
+                    echo"</small>";
+                    ?>
+                  </div>
+                  <div class="body">
+                    <?php
+                    echo"<b>Solution : </b>";
+                    echo $row['solution_detail'];?>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php
+          }	}}?>
       </header>
 
       <div class="row about-extra">
@@ -142,7 +181,7 @@
           type: 'POST',
           dataType: 'json',
           success: function(res) {
-            console.log(res);
+            //console.log(res);
             $('#userVal').html(res[0].user);
             $('#managerVal').html(res[2].manager);
             $('#complaintVal').html(res[1].complaint);
