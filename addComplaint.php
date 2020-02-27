@@ -3,7 +3,7 @@ session_start();
 
 function fileUpload(){
   $uploadOk = 1;
-  $target_dir = "../upload/";
+  $target_dir = "upload/";
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
   if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -20,7 +20,7 @@ function fileUpload(){
     echo "not valid";
   }
 
-  $link = "http://127.0.0.1/upload/";
+  $link = "http://127.0.0.1/Hackathon/upload/";
   // Check if $uploadOk is set to 0 by an error
   if ($uploadOk== 0) {
     //echo "Upload fails";
