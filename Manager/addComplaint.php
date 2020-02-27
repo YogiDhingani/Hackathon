@@ -26,7 +26,7 @@ function fileUpload(){
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)){
       updateSQL($link.basename($_FILES["fileToUpload"]["name"]));
     } else {
-      //echo "Sorry, there was an error uploading your file.";
+        echo "Sorry, there was an error uploading your file.";
     }
   }
 }
@@ -37,10 +37,10 @@ include("config2.php");
   $id=$_POST['id'];
   //echo $id;
 
-  if($par === "not"){
-    $sql = "Update complaint set solution_detail='$description', status='Completed',solution_date=date_create()->format('Y-m-d H:i:s') where complaint_id=$id";
+  if($par == "not"){
+    $sql = "Update complaint set solution_detail='$description', status='Completed',solution_date= NOW() where complaint_id=$id";
   }else{
-    $sql = "Update complaint set solution_detail='$description',solution_file='$par',status='Completed' where complaint_id=$id";
+    $sql = "Update complaint set solution_detail='$description',solution_file='$par',status='Completed',solution_date= NOW() where complaint_id=$id";
   }
 
   if ($conn->query($sql) === TRUE) {
