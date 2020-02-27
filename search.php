@@ -7,6 +7,7 @@ if ($result->num_rows > 0) {
   $arrs = array();
   while($row = $result->fetch_assoc()) {
     $ar['title'] = $row['title'];
+    $ar['category'] = $row['title'];
     $ar['complaint_detail'] = $row['complaint_detail'];
     $ar['solution_detail'] = $row['solution_detail'];
   }
