@@ -27,7 +27,15 @@
           <div class="form-group row">
             <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" placeholder="Category" name="category" required>
+                    <?php include 'getConn.php';
+               $s = 'SELECT name FROM category';
+               $sql=mysqli_query($conn,$s);
+               echo "<select name=\"category\" class=\"form-control\">";
+               while($row = mysqli_fetch_assoc($sql))
+               {echo "<option value='" . $row['name'] ."'>" . $row['name']."</option>";
+               }
+               echo "</select>";
+              ?>
             </div>
           </div>
           <div class="form-group row">
