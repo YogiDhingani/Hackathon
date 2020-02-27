@@ -59,7 +59,12 @@ header('Location:login.php');
                  <tr>
                  <!--td> <!--?php echo  $result['user_id'];?> </td-->
                 <td> <?php echo  $result ['title'];?> </td>
-                  <td><?php echo $result ['category_name'];?></td>
+                  <td><?php
+                                        $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
+                                        $data1 = mysqli_query($conn, $q);
+                                        $result1 = mysqli_fetch_array($data1);
+                                        echo $result1['name'];
+                                        ?></td>
 				  <td><?php echo $result ['status'];?></td>
 				  <td> <?php if ($result ['location'] != NULL) {
                                                 echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';

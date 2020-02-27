@@ -61,7 +61,12 @@ $data = mysqli_query($conn, $q);
                                     </tr>
                                     <tr>
                                         <td>Category</td>
-                                        <td><?php echo $result ['category_name']; ?></td>
+                                        <td><?php
+                                        $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
+                                        $data1 = mysqli_query($conn, $q);
+                                        $result1 = mysqli_fetch_array($data1);
+                                        echo $result1['name'];
+                                        ?></td>
                                     </tr>
                                     <tr>
                                         <td>Complaint_detail</td>
