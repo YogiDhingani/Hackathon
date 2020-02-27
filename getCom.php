@@ -11,15 +11,24 @@ if ($result->num_rows > 0) {
     $com = array();
     $com['id'] = $row["complaint_id"];
     $com['title'] = $row["title"];
-    $com['category'] = $row["category_name"];
+    //$com['category'] = $row["category_name"];
     $com['desc'] = $row["complaint_detail"];
 
-    $mng =$row["manager_id"];
-    $sql2 = "SELECT name FROM manager where manager_id = $mng";
+    $cat =$row["category_id"];
+    $sql2 = "SELECT name FROM category where category_id = $cat";
     $result2 = $conn->query($sql2);
     if ($result2->num_rows > 0) {
       while($row2 = $result2->fetch_assoc()) {
-        $com['manager'] = $row2["name"];
+        $com['category'] = $row2["name"];
+      }
+    }
+
+    $mng =$row["manager_id"];
+    $sql3 = "SELECT name FROM manager where manager_id = $mng";
+    $result3 = $conn->query($sql3);
+    if ($result3->num_rows > 0) {
+      while($row3 = $result3->fetch_assoc()) {
+        $com['manager'] = $row3["name"];
       }
     }
 

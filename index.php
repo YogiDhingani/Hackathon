@@ -52,30 +52,30 @@
         <section id="why-us" class="wow fadeIn">
           <div class="container">
             <header class="section-header">
-              <h3>Why choose us?</h3>
-              <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+              <h3>What we done so far!</h3>
+              <p>We are helping our users at best possible way and providing quality work</p>
             </header>
 
             <div class="row counters">
 
               <div class="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">274</span>
-                <p>Clients</p>
+                <span data-toggle="counter-up" id="userVal">274</span>
+                <p>Users</p>
               </div>
 
               <div class="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">421</span>
-                <p>Projects</p>
+                <span data-toggle="counter-up" id="managerVal">421</span>
+                <p>Managers</p>
               </div>
 
               <div class="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">1,364</span>
-                <p>Hours Of Support</p>
+                <span data-toggle="counter-up" id="complaintVal">1,364</span>
+                <p>complaints files</p>
               </div>
 
               <div class="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">18</span>
-                <p>Hard Workers</p>
+                <span data-toggle="counter-up" id="comVal">18</span>
+                <p>Complaints solved</p>
               </div>
             </div>
           </div>
@@ -153,6 +153,21 @@
       Footer
       ============================-->
       <?php include("footer.php");?>
-
+      <script>
+        $(document).ready(function() {
+          $.ajax({
+            url: 'getindex.php',
+            type: 'POST',
+            dataType: 'json',
+            success: function(res) {
+              console.log(res);
+              document.getElementById("userVal").innerHTML=res[0].user;
+              document.getElementById("managerVal").innerHTML=res[0].complaint;
+              document.getElementById("complaintVal").innerHTML=res[0].complaint;
+              document.getElementById("comVal").innerHTML=res[0].completed;
+            }
+          });
+        });
+      </script>
     </body>
     </html>

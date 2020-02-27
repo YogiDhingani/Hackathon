@@ -43,7 +43,7 @@ function updateSQL($par){
   if(isset($_POST['cords'])){
       $location=$_POST['cords'];
   }
-  $mng = "SELECT manager_id FROM manager where category = (SELECT category_id FROM category where name = '$category')";
+  $mng = "SELECT manager_id FROM manager where category = '$category'";
   $result = $conn->query($mng);
   if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -52,10 +52,10 @@ function updateSQL($par){
   }
 
   if($par === "not"){
-    $sql = "INSERT INTO complaint(title,category_name,complaint_detail,location,status,privacy,user_id,manager_id)
+    $sql = "INSERT INTO complaint(title,category_id,complaint_detail,location,status,privacy,user_id,manager_id)
     VALUES('$title','$category','$description','$location','pending',0,$userid,$mng_id)";
   }else{
-    $sql = "INSERT INTO complaint(title,category_name,complaint_detail,location,status,privacy,user_id,manager_id,complaint_file)
+    $sql = "INSERT INTO complaint(title,category_id,complaint_detail,location,status,privacy,user_id,manager_id,complaint_file)
     VALUES('$title','$category','$description','$location','pending',0,$userid,$mng_id,'$par')";
   }
 
