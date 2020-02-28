@@ -74,7 +74,7 @@ if(!isset($_SESSION['user_id'])){
         <li class="drop-down"><a href="">Compliant</a>
           <ul>
             <li><a href="new_complaint.php">New Complaint</a></li>
-            <li><a href="Pending_complaint.php">Your Complaint</a></li>
+            <li><a href="Pending_complaint.php">Your Complaints</a></li>
           </ul>
         </li>
       	  <li><a href="ProfileDB.php">Profile</a></li>

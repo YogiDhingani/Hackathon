@@ -21,7 +21,7 @@
 
                     <form method="post">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="  Search" name="search">
+                            <input type="text" class="form-control" placeholder="  Search by title or category" name="search">
                             <input class="btn btn-success" type="submit" name="submit" value="Search">
                         </div>
                     </form>
@@ -43,8 +43,8 @@
                         if (isset($_POST['submit'])) {
                             $search = $_POST['search'];
                             include 'getConn.php';
-                            $sql = "SELECT * FROM complaint WHERE title = '$search' or category_id = (SELECT
-        category_id from category where name = '$search')";
+                            $sql = "SELECT * FROM complaint WHERE LOWER(title) = LOWER('$search') or category_id = (SELECT
+                                  category_id from category where LOWER(name) = LOWER('$search'))";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {

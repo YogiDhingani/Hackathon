@@ -13,6 +13,16 @@ if ($result->num_rows > 0) {
     $com['title'] = $row["title"];
     //$com['category'] = $row["category_name"];
     $com['desc'] = $row["complaint_detail"];
+    $com['count'] = $row["count"];
+    $com['status'] = $row["status"];
+    $com['date'] = $row["creation_date"];
+    //$com['time'] = $row["solution_date"];
+    if($row["status"]=="completed"){
+      //$date = new DateTime($row["solution_date"]);
+      $date = date_create($row["solution_date"]);
+      date_add($date, date_interval_create_from_date_string('2 days'));
+      $com['time'] = date_format($date, 'Y-m-d H:i:s');
+    }
 
     $cat =$row["category_id"];
     $sql2 = "SELECT name FROM category where category_id = $cat";
@@ -46,14 +56,12 @@ if ($result->num_rows > 0) {
       $com['sol_det'] = $row["solution_detail"];
     else
       $com['sol_det'] = "Your request is still pending";
-    
+
     if($row["review"] != NULL)
       $com['review'] = $row["review"];
     else
       $com['review'] = "not";
 
-    $com['status'] = $row["status"];
-    $com['date'] = $row["creation_date"];
     array_push($coms,$com);
   }
   echo json_encode($coms);

@@ -27,7 +27,7 @@
           <div class="form-group row">
             <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-4">
-                    <?php include 'getConn.php';
+            <?php include 'getConn.php';
                $s = 'SELECT * FROM category';
                $sql=mysqli_query($conn,$s);
                echo "<select name=\"category\" class=\"form-control\">";
