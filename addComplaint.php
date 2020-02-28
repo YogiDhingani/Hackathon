@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'filter.php';
 function fileUpload(){
   $uploadOk = 1;
   $target_dir = "upload/";
@@ -37,7 +37,7 @@ function updateSQL($par){
   include("getConn.php");
   $title=$_POST['title'];
   $category=$_POST['category'];
-  $description=$_POST['description'];
+  $description=filterwords($_POST['description']);
   $userid=$_SESSION['user_id'];
   $location = null;
   if(isset($_POST['cords'])){
@@ -62,7 +62,7 @@ function updateSQL($par){
   if ($conn->query($sql) === TRUE) {
     echo "success";
   }else {
-    echo '<script>console.log("SQL Error")</script>';
+    echo "SQL Error";
   }
 }
 
