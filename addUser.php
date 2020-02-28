@@ -14,16 +14,15 @@
     echo "phone";
   }else if($password!==$cpassword){
     echo "Not matched";
-  }else{
+  }else{*/
     include("getConn.php");
     $sql = "SELECT user_id FROM user WHERE email_id = '$eid'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-      echo "Already";
+      echo "<h1>Email Already Exist</h1>";
     }
-    else {*/
+    else {
       $pass = md5($password);
-      include("getConn.php");
       $sql = "INSERT INTO user(name,email_id,phone_no,password,gender) VALUES($name,$eid,$phone_no,'$pass',$gender)";
       if ($conn->query($sql) === TRUE) {
           header("Location:login.php");
@@ -31,6 +30,7 @@
       else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
+    }
    // }
   //}
 ?>
