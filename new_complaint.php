@@ -193,6 +193,7 @@
             alert("Only jpg, png and pdf allowed");
           }else if(data=="success"){
             alert("Request successfully send");
+            setInterval("window.location.href='pending_complaint.php'",200);
           }else if(data=="big file"){
             alert("Size is too big");
           }else {
