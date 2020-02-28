@@ -62,23 +62,19 @@ $data = mysqli_query($conn, $q);
                                     <tr>
                                         <td>Category</td>
                                         <td><?php
-                                        $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
-                                        $data1 = mysqli_query($conn, $q);
-                                        $result1 = mysqli_fetch_array($data1);
-                                        echo $result1['name'];
-                                        ?></td>
+                                            $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
+                                            $data1 = mysqli_query($conn, $q);
+                                            $result1 = mysqli_fetch_array($data1);
+                                            echo $result1['name'];
+                                            ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Complaint_detail</td>
+                                        <td>complain_detail</td>
                                         <td><?php echo $result ['complaint_detail']; ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Solution_detail</td>
-                                        <td><?php echo $result ['solution_detail']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Complaint_file</td>
-                                        <td><?php
+                                        <td>complaint_file</td>
+                                        <td>    <?php
                                             if ($result ['complaint_file'] != NULL) {
                                                 echo "<a href=" . $result ['complaint_file'] . ">See file</a>";
                                             } else {
@@ -87,19 +83,14 @@ $data = mysqli_query($conn, $q);
                                             ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Solution_file</td>
-                                        <td><?php
-                                            if ($result ['solution_file'] != NULL) {
-                                                echo "<a href=" . $result ['solution_file'] . ">See file</a>";
-                                            } else {
-                                                echo "No Solution file exist";
-                                            }
-                                            ?></td>
+                                        <td>User Review</td>
+                                        <td><?php echo $result ['review']; ?></td>
                                     </tr>
                                     <tr>
                                         <td>location</td>
-                                        <td> <?php if ($result ['location'] != NULL) {
-                                                echo '<a target="_blank" href=https://www.google.com/maps/place/'.$result ['location'].'>View Location</a>';
+                                        <td> <?php
+                                            if ($result ['location'] != NULL) {
+                                                echo '<a target="_blank" href=https://www.google.com/maps/place/' . $result ['location'] . '>View Location</a>';
                                             } else {
                                                 echo "No location specified";
                                             }
@@ -112,16 +103,22 @@ $data = mysqli_query($conn, $q);
                                     </tr>
                                     <!--tr>
                                         <td>privacy</td>
-                                        <td><?--php echo $result ['privacy']; ?></td>
+                                        <td><?-php echo $result ['privacy']; ?></td>
                                     </tr-->
+
                                     <tr>
                                         <td>creation_date</td>
                                         <td><?php echo $result ['creation_date']; ?></td>
                                     </tr>
-                                    <tr>
+
+                                    <?php
+                                    if ($result ['status'] == "completed") {
+                                        echo '<tr>
                                         <td>solution_date</td>
-                                        <td><?php echo $result ['solution_date']; ?></td>
-                                    </tr>
+                                        <td>' . $result ['solution_date'] . '</td>
+                                    </tr>';
+                                    }
+                                    ?>
                                     <tr>
                                         <td>User</td>
                                         <td><?php
@@ -140,73 +137,104 @@ $data = mysqli_query($conn, $q);
                                             echo '<a href="manageredit.php?id=' . $result['manager_id'] . '">' . $result1['name'] . '</a>';
                                             ?></td>
                                     </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            <a href="changestatus.php?id=<?php echo $_REQUEST['id'] ?>" class="btn_1 medium">Accept</a></td> 
+ 
+                                        <td>
+                                            <a href="changestatus2.php?id=<?php echo $_REQUEST['id'] ?>" class="btn_1 medium">Reject</a></td> 
+                                    </tr>
 
                                     <!--td>
                       <a href="useredit.php?id=<--?php echo $result['user_id'];?>" class="btn_1 gray edits">Edit</a>
                                           </td> 
                     <td>
                        <a href="userdelete.php?id=<--?php echo $result['user_id'];?>" onclick="return val()" class="btn_1 gray delete">Delete</a>
-                                  </td>      
-                  </tr>
-         
+                                  </td-->      
+                                    </tr>
+
+                                    <?php $j++; ?>
+                                <script type="text/javascript">
+                                    function val()
+                                    {
+                                        conf = confirm('Are you sure to delete this user?');
+                                        if (conf)
+                                            return true
+                                        else
+                                            return false
+                                    }
+                                </script>
+
+
+                            <?php } ?>
+                            </tbody>
+                        </table>
+
+                        <center>
+                            <?php
+                            $s = "SELECT count(*) AS a FROM complaint where complaint_id=" . $_REQUEST['id'];
+                            $sql = mysqli_query($conn, $s);
+                            while ($row = $sql->fetch_assoc()) {
+
+                                if ($row['a'] == 0) {
+                                    echo "No Complaints Found";
+                                }
+                            }
+                            ?>
+
+                        </center>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /tables-->
+        </div>
+        <!-- /container-fluid-->
+    </div>
+    <!-- /container-wrapper-->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="index.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
 
 
 
-                                <?php } ?>
-  </tbody>
-  </table>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
-</div>
-  </div>
- 
-</div>
-                                <!-- /tables-->
-                                </div>
-                                <!-- /container-fluid-->
-                                </div>
-                                <!-- /container-wrapper-->
-                                <!-- Scroll to Top Button-->
-                            <a class="scroll-to-top rounded" href="#page-top">
-                                <i class="fa fa-angle-up"></i>
-                            </a>
-                            <!-- Logout Modal-->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                            <a class="btn btn-primary" href="index.php">Logout</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Bootstrap core JavaScript-->
-
-
-
-                            <script src="vendor/jquery/jquery.min.js"></script>
-                            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-                            <!-- Core plugin JavaScript-->
-                            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-                            <!-- Page level plugin JavaScript-->
-                            <script src="vendor/chart.js/Chart.min.js"></script>
-
-                            <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-                            <script src="vendor/jquery.selectbox-0.2.js"></script>
-                            <script src="vendor/retina-replace.min.js"></script>
-                            <script src="vendor/jquery.magnific-popup.min.js"></script>
-                            <!-- Custom scripts for all pages-->
-                            <script src="js/admin.js"></script>
-                            <!-- Custom scripts for this page-->
-                            <script src="js/admin-datatables.js"></script>
-                            <script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="vendor/jquery.selectbox-0.2.js"></script>
+    <script src="vendor/retina-replace.min.js"></script>
+    <script src="vendor/jquery.magnific-popup.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/admin.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/admin-datatables.js"></script>
+    <script>
                                 $(document).ready(function () {
                                     $("#myInput").on("keyup", function () {
                                         var value = $(this).val().toLowerCase();
@@ -215,6 +243,8 @@ $data = mysqli_query($conn, $q);
                                         });
                                     });
                                 });
-                            </script>
-                            </body>
-                            </html>
+    </script>
+</body>
+</html>
+
+

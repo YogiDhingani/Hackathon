@@ -18,26 +18,32 @@
                     
                     <form method="post" action="checkLogin.php">
                         <div class="form-group row">
-                            <label style="color:#ffffff" for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                            <label style="color:#ffffff" for="inputOTP" class="col-sm-2 col-form-label">OTP</label>
                             <div class="col-sm-4">
-                                <input type="email" class="form-control" name="username" placeholder="example@gmail.com">
+                                <input type="text" class="form-control" name="otp" placeholder="Enter OTP">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="color:#ffffff" for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-4">
-                                <input type="password" class="form-control" name="password" placeholder="Password">
+                                <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <label style="color:#ffffff" for="inputPasswordConf" class="col-sm-2 col-form-label">Confirm Password</label>
+                            <div class="col-sm-4">
+                                <input type="password" class="form-control" name="confirm_password" placeholder="Enter Confirm Password">
                             </div>
 
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <input type="submit" class="btn-get-started scrollto" value="Login" name="login">
-                                <a href="signup.php" class="btn-services scrollto">Register</a>
+                                <a href="signup.php" class="btn-services scrollto">Change Password</a>
                             </div>
                         </div>
                     </form>
-                    <a href="forgetpass.php" style="color:white"/>Forget Password?</a-->
+                    
 
                 </div>
 

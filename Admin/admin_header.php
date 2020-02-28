@@ -115,7 +115,8 @@
                                 <a href="viewpendingcomplaint.php">Pending</a>            </li>
                             <li>
                                 <a href="viewsolvedcomplaint.php">Solved</a>            </li>
-                            <!--li>
+                               <li>
+                                <a href="viewreviewcomplaint.php">Review</a>            </li><!--li>
                             <a href="viewstore.php">Stores</a>            </li>
                             <li>  <a href="viewbook.php">Books</a> </li>
                              <li>  <a href="viewvideo.php">Videos</a> </li>
