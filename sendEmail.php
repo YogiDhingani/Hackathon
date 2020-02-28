@@ -26,7 +26,7 @@ $cpassword = $_POST['cpassword'];
     }
     else {
       sendemail($eid);
-      header('Location:login.php');
+      echo "success";
     }
   }
 

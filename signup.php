@@ -71,12 +71,12 @@
   </section>
   <?php include 'footer.php'?>
 
-<!--script>
+<script>
 $("#regform").submit(function(e){
   e.preventDefault();
   var form_data = new FormData(this);
   $.ajax({
-    url: "/Hackathon/addUser.php",
+    url: "/Hackathon/sendEmail.php",
     cache: false,
     contentType: false,
     processData: false,
@@ -100,7 +100,7 @@ $("#regform").submit(function(e){
     }
   });
 });
-</script-->
+</script>
 
 </body>
 </html>

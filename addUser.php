@@ -16,10 +16,10 @@
     echo "Not matched";
   }else{*/
     include("getConn.php");
-    $sql = "SELECT user_id FROM user WHERE email_id = '$eid'";
+    $sql = "SELECT user_id FROM user WHERE email_id = $eid";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-      echo "<h1>Email Already Exist</h1>";
+      echo '<h1>You are Already Registered <a href="login.php">click here to login</a></h1>';
     }
     else {
       $pass = md5($password);
