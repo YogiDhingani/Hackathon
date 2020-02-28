@@ -80,6 +80,7 @@ if(!isset($_SESSION['user_id'])){
       	  <li><a href="ProfileDB.php">Profile</a></li>
           <li><a href="ContactUs.php">Contact Us</a></li>
       	  <li><a href="AboutUs.php">About Us</a></li>
+          <li><a href="heatmap.php">Visual Map</a></li>
       	  <li><a href="#" onclick="logout()">Log Out</a></li>
       </ul>
     </nav>

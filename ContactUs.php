@@ -45,7 +45,7 @@
 
         <div class="col-lg-6">
           <div class="map mb-4 mb-lg-0">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.731019208071!2d72.59273001492085!3d23.106940384910335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e83c959d4de6f%3A0x748d0828c02cf9fa!2sVishwakarma+Government+Engineering+College!5e0!3m2!1sen!2sin!4v1565321968402!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 350px;" allowfullscreen id="google-map"></iframe>
           </div>
         </div>
 

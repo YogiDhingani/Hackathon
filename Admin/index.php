@@ -167,16 +167,27 @@ include('admin_header.php');
           <span class="float-right">
             <i class="fa fa-angle-right"></i>              </span>            </a>          </div>
     </div-->
-
-
-
-
             </section>
-
             <!-- /cards -->
         </div>
-        <!-- /.container-fluid-->
+       
+
+        <div class="container">
+            <div class="row">
+            <div class="col-md-6">
+                <?php include('chart.php'); ?>
+            </div>
+            
+            
+            <div class="col-md-6">
+                <?php include('chartstatus.php'); ?>
+            </div>
+            </div>
+        </div>
     </div>
-    <!-- /.container-wrapper-->
-    <?php include('admin_footer.php'); ?>
+     <!-- /.container-fluid-->
+</div>
+
+<!-- /.container-wrapper-->
+<?php include('admin_footer.php'); ?>
    

@@ -28,6 +28,7 @@
               <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
           </div>
+            <a href="forgetpass.php" style="color:white"/>Forget Password?</a>
           <div class="form-group row">
             <div class="col-sm-10">
               <input type="submit" class="btn-get-started scrollto" value="Login" name="login">
