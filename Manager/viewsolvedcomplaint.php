@@ -7,7 +7,7 @@ header('Location:login.php');
 <?php include('admin_header.php'); ?>
 <?php 
       $j=1; $i=0;
-$q='SELECT * FROM complaint where status="Completed" and manager_id='.$_SESSION['login_admin_id'];
+$q='SELECT * FROM complaint where status="completed" and manager_id='.$_SESSION['login_admin_id'];
           $data=mysqli_query($conn,$q);
           ?>
   <!-- /Navigation-->
@@ -102,7 +102,7 @@ $q='SELECT * FROM complaint where status="Completed" and manager_id='.$_SESSION[
          <center>
                   <?php
                 
-                         $s='SELECT count(*) As a FROM complaint where status="Completed" and manager_id='.$_SESSION['login_admin_id'];
+                         $s='SELECT count(*) As a FROM complaint where status="completed" and manager_id='.$_SESSION['login_admin_id'];
                  $sql=mysqli_query($conn,$s);
                 while($row = $sql->fetch_assoc())
 

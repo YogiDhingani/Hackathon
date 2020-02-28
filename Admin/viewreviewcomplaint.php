@@ -9,7 +9,7 @@ if (!isset($_SESSION['login_admin_id'])) {
 <?php
 $j = 1;
 $i = 0;
-$q = "SELECT * FROM complaint where complaint_id=" . $_REQUEST['id'];
+$q = 'SELECT * FROM complaint where status="review"';
 $data = mysqli_query($conn, $q);
 ?>
 <!-- /Navigation-->
@@ -35,8 +35,10 @@ $data = mysqli_query($conn, $q);
                         <table  class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Description</th>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Location</th>
                                 </tr>
                             </thead>
                            <!--  <tfoot>
@@ -56,33 +58,14 @@ $data = mysqli_query($conn, $q);
                                     ?>
                                     <tr>
                                         <!--td> <!--?php echo  $result['user_id'];?> </td-->
-                                        <td>Title</td>
                                         <td> <?php echo $result ['title']; ?> </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Category</td>
                                         <td><?php
                                             $q = 'SELECT * FROM category where category_id=' . $result['category_id'];
                                             $data1 = mysqli_query($conn, $q);
                                             $result1 = mysqli_fetch_array($data1);
                                             echo $result1['name'];
                                             ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>complain_detail</td>
-                                        <td><?php echo $result ['complaint_detail']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>complaint_file</td>
-                                        <td>    <?php
-                                            if ($result ['complaint_file'] != NULL) {
-                                                echo "<a href=" . $result ['complaint_file'] . ">See file</a>";
-                                            } else {
-                                                echo "No Complaint file exist";
-                                            }
-                                            ?></td>
-                                    </tr>				<tr>
-                                        <td>location</td>
+                                        <td><?php echo $result ['status']; ?></td>
                                         <td> <?php
                                             if ($result ['location'] != NULL) {
                                                 echo '<a target="_blank" href=https://www.google.com/maps/place/' . $result ['location'] . '>View Location</a>';
@@ -90,55 +73,13 @@ $data = mysqli_query($conn, $q);
                                                 echo "No location specified";
                                             }
                                             ?></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>status</td>
-                                        <td><?php echo $result ['status']; ?></td>
-                                    </tr>
-                                    <!--tr>
-                                        <td>privacy</td>
-                                        <td><?--php echo $result ['privacy']; ?></td>
-                                    </tr-->
-
-                                    <tr>
-                                        <td>creation_date</td>
-                                        <td><?php echo $result ['creation_date']; ?></td>
-                                    </tr>
-                                    
-                                                                        <?php
-                                    if ($result ['status'] == "completed") {
-                                        echo '<tr>
-                                        <td>solution_date</td>
-                                        <td>'.$result ['solution_date'].'</td>
-                                    </tr>';
-                                    } 
-                                    ?>
-                                    <tr>
-                                        <td>User</td>
-                                        <td><?php
-                                            $q1 = "SELECT name FROM user where user_id=" . $result['user_id'];
-                                            $data1 = mysqli_query($conn, $q1);
-                                            $result1 = mysqli_fetch_array($data1);
-                                            echo '<a href="useredit.php?id=' . $result['user_id'] . '">' . $result1['name'] . '</a>';
-                                            ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Manager</td>
-                                        <td><?php
-                                            $q1 = "SELECT name FROM manager where manager_id=" . $result['manager_id'];
-                                            $data1 = mysqli_query($conn, $q1);
-                                            $result1 = mysqli_fetch_array($data1);
-                                            echo '<a href="manageredit.php?id=' . $result['manager_id'] . '">' . $result1['name'] . '</a>';
-                                            ?></td>
-                                    </tr>
-
-                                    <!--td>
-                      <a href="useredit.php?id=<--?php echo $result['user_id'];?>" class="btn_1 gray edits">Edit</a>
-                                          </td> 
-                    <td>
-                       <a href="userdelete.php?id=<--?php echo $result['user_id'];?>" onclick="return val()" class="btn_1 gray delete">Delete</a>
-                                  </td-->      
+                                        <td><a href="viewmorereview.php?id=<?php echo $result['complaint_id']; ?>" class="btn_1 gray edits">View More</a></td>
+                                        <!--td>
+                          <a href="useredit.php?id=<--?php echo $result['user_id'];?>" class="btn_1 gray edits">Edit</a>
+                                              </td> 
+                        <td>
+                           <a href="userdelete.php?id=<--?php echo $result['user_id'];?>" onclick="return val()" class="btn_1 gray delete">Delete</a>
+                                      </td-->      
                                     </tr>
 
                                     <?php $j++; ?>
@@ -161,12 +102,12 @@ $data = mysqli_query($conn, $q);
 
                         <center>
                             <?php
-                            $s = "SELECT count(*) AS a FROM complaint where complaint_id=" . $_REQUEST['id'];
+                            $s = 'SELECT count(*) As a FROM complaint where status="review"';
                             $sql = mysqli_query($conn, $s);
                             while ($row = $sql->fetch_assoc()) {
 
                                 if ($row['a'] == 0) {
-                                    echo "No Complaints Found";
+                                    echo "No Review Complaint Found";
                                 }
                             }
                             ?>

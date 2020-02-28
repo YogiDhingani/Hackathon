@@ -9,7 +9,7 @@ if (!isset($_SESSION['login_admin_id'])) {
 <?php
 $j = 1;
 $i = 0;
-$q = 'SELECT * FROM complaint where status="Completed"';
+$q = 'SELECT * FROM complaint where status="completed"';
 $data = mysqli_query($conn, $q);
 ?>
 <!-- /Navigation-->
@@ -101,7 +101,7 @@ $data = mysqli_query($conn, $q);
 
                         <center>
                             <?php
-                            $s = 'SELECT count(*) As a FROM complaint where status="Completed"';
+                            $s = 'SELECT count(*) As a FROM complaint where status="completed"';
                             $sql = mysqli_query($conn, $s);
                             while ($row = $sql->fetch_assoc()) {
 
