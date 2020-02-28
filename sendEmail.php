@@ -55,7 +55,7 @@ function sendemail($eid) {
         //Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'Verification Link';
-        $mail->Body = 'Cilck here to verify account http://192.168.2.22/Hackathon/addUser.php?nm="'.$_POST['nm'].'"&eid="'.$_POST['eid'].'"&phone_no="'.$_POST['phone_no'].'"&gender="'.$_POST['gender'].'"&password="'.$_POST['password'].'"';
+        $mail->Body = 'Cilck here to verify account http://127.0.0.1/Hackathon/addUser.php?nm="'.$_POST['nm'].'"&eid="'.$_POST['eid'].'"&phone_no="'.$_POST['phone_no'].'"&gender="'.$_POST['gender'].'"&password="'.$_POST['password'].'"';
         $mail->AltBody = '';
         $mail->send();
 
