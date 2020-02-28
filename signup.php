@@ -14,7 +14,7 @@
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-        <form method="post" id="regform" action="addUser.php">
+          <form method="post" id="regform" action="sendEmail.php">
           <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-4">
@@ -71,7 +71,7 @@
   </section>
   <?php include 'footer.php'?>
 
-<script>
+<!--script>
 $("#regform").submit(function(e){
   e.preventDefault();
   var form_data = new FormData(this);
@@ -100,7 +100,7 @@ $("#regform").submit(function(e){
     }
   });
 });
-</script>
+</script-->
 
 </body>
 </html>

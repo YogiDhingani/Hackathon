@@ -1,12 +1,12 @@
 <?php
-  $name=$_POST['nm'];
-  $eid=$_POST['eid'];
-  $phone_no=$_POST['phone_no'];
-  $gender=$_POST['gender'];
-  $password=$_POST['password'];
-  $cpassword=$_POST['cpassword'];
+  $name=$_GET['nm'];
+  $eid=$_GET['eid'];
+  $phone_no=$_GET['phone_no'];
+  $gender=$_GET['gender'];
+  $password=$_GET['password'];
+  //$cpassword=$_POST['cpassword'];
 
-  function validPhone($ph){
+  /*function validPhone($ph){
     return preg_match('/^[0-9]{10}+$/',$ph);
   }
 
@@ -21,15 +21,16 @@
     if ($result->num_rows > 0) {
       echo "Already";
     }
-    else {
+    else {*/
       $pass = md5($password);
-      $sql = "INSERT INTO user(name,email_id,phone_no,password,gender) VALUES('$name','$eid',$phone_no,'$pass','$gender')";
+      include("getConn.php");
+      $sql = "INSERT INTO user(name,email_id,phone_no,password,gender) VALUES($name,$eid,$phone_no,'$pass',$gender)";
       if ($conn->query($sql) === TRUE) {
-        echo "success";
+          header("Location:login.php");
       }
       else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
-    }
-  }
+   // }
+  //}
 ?>
