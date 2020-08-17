@@ -96,10 +96,10 @@ $data = mysqli_query($conn, $q);
                                         <td>status</td>
                                         <td><?php echo $result ['status']; ?></td>
                                     </tr>
-                                    <tr>
+                                    <!--tr>
                                         <td>privacy</td>
-                                        <td><?php echo $result ['privacy']; ?></td>
-                                    </tr>
+                                        <td><?--php echo $result ['privacy']; ?></td>
+                                    </tr-->
 
                                     <tr>
                                         <td>creation_date</td>
@@ -107,7 +107,7 @@ $data = mysqli_query($conn, $q);
                                     </tr>
                                     
                                                                         <?php
-                                    if ($result ['status'] == "Completed") {
+                                    if ($result ['status'] == "completed") {
                                         echo '<tr>
                                         <td>solution_date</td>
                                         <td>'.$result ['solution_date'].'</td>
@@ -161,12 +161,12 @@ $data = mysqli_query($conn, $q);
 
                         <center>
                             <?php
-                            $s = "SELECT count(*) AS a FROM user";
+                            $s = "SELECT count(*) AS a FROM complaint where complaint_id=" . $_REQUEST['id'];
                             $sql = mysqli_query($conn, $s);
                             while ($row = $sql->fetch_assoc()) {
 
                                 if ($row['a'] == 0) {
-                                    echo "No Users Found";
+                                    echo "No Complaints Found";
                                 }
                             }
                             ?>

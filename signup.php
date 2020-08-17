@@ -14,7 +14,7 @@
   <section id="intro" class="clearfix">
     <div class="container">
       <div class="intro-info">
-        <form method="post" id="regform" action="addUser.php">
+          <form method="post" id="regform" action="sendEmail.php">
           <div class="form-group row">
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-4">
@@ -76,7 +76,7 @@ $("#regform").submit(function(e){
   e.preventDefault();
   var form_data = new FormData(this);
   $.ajax({
-    url: "/Hackathon/addUser.php",
+    url: "/Hackathon/sendEmail.php",
     cache: false,
     contentType: false,
     processData: false,

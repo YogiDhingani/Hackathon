@@ -47,7 +47,7 @@ include('admin_header.php');
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-star"></i>              </div>
 				 <?php
-                 $s='SELECT count(*) As a FROM complaint where status="Completed" and manager_id='.$_SESSION['login_admin_id'];
+                 $s='SELECT count(*) As a FROM complaint where status="completed" and manager_id='.$_SESSION['login_admin_id'];
 				 
                  $sql=mysqli_query($conn,$s);
                  while($row = $sql->fetch_assoc())
@@ -68,7 +68,7 @@ include('admin_header.php');
               <div class="card-body-icon">
                 <i class="fa fa-fw fa-calendar-check-o"></i>              </div>
               <?php
-                 $s='SELECT count(*) As a FROM complaint where status="Pending" and manager_id='.$_SESSION['login_admin_id'];
+                 $s='SELECT count(*) As a FROM complaint where status="pending" and manager_id='.$_SESSION['login_admin_id'];
 				 
                  $sql=mysqli_query($conn,$s);
                  while($row = $sql->fetch_assoc())

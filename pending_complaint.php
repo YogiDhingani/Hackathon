@@ -67,7 +67,7 @@ $(document).ready(function() {
           </div>
           </div>
           <div class="card-footer">
-          <small class="text-muted">${v.date}</small>
+          <small class="text-muted">Created On: ${v.date}</small>
           <small style="margin-left:10px;">Assigned to: ${v.manager}</small>
 
           <small class="v-divider" id="getComment${v.id}" onclick="showComment(${v.id})" data-toggle="collapse" data-target="#collapseOne${v.id}" aria-expanded="false"
@@ -106,11 +106,20 @@ $(document).ready(function() {
           if(v.sol_file!="No file found"){
             $('#doc'+v.id).append(`<p class="card-text">Solution file:<a href="${v.sol_file}"> GetFile</a></p>`);
           }
-          if(v.status == "Completed" && v.review!="satisfied" )
-          {
-            $('#sol'+v.id).append(`<button class="btn btn-secondary"  type="button" value="Satisfied with Solution" name="satisfied" onclick="satisfiedSend(${v.id})">Satisfied with Solution</button> <button class="btn btn-secondary" value="Not Satisfied" name="not_satisfied" onclick="not_satisfied(${v.id})">Not Satisfied</button>`);
+          // complaint is complted but user not giving answer
+          var currentdate = new Date();
+          var datetime = currentdate.getFullYear() + "/"
+                + (currentdate.getMonth()+1)  + "/"
+                + currentdate.getDate()+ " "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+
+          if(v.status=="completed"&&v.count<2&&v.review!="satisfied"){
+            $('#sol'+v.id).append(`<button class="btn btn-secondary"  type="button" value="Satisfied with Solution" name="satisfied"
+            onclick="satisfiedSend(${v.id})">Satisfied with Solution</button> <button class="btn btn-secondary" value="Not Satisfied"
+            name="not_satisfied" onclick="not_satisfied(${v.id})">Not Satisfied</button>`);
           }
-          
         });
       }
     }

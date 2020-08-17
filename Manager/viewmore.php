@@ -95,10 +95,10 @@ $q="SELECT * FROM complaint where complaint_id=".$_REQUEST['id'];
 					<td>status</td>
 					<td><?php echo $result ['status'];?></td>
 				</tr>
-				<tr>
+				<!--tr>
 					<td>privacy</td>
-					<td><?php echo $result ['privacy'];?></td>
-				</tr>
+					<td><?--php echo $result ['privacy'];?></td>
+				</tr-->
 								<tr>
 					<td>creation_date</td>
 					<td><?php echo $result ['creation_date'];?></td>
